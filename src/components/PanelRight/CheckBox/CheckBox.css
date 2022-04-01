@@ -1,0 +1,79 @@
+
+.checkbox {
+  width: 243px;
+  height: 38px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgb(166, 215, 159);
+  margin-top: 38px;
+}
+
+
+.check {
+  position: relative;
+  width: 36px;
+  box-sizing: content-box;
+  margin: auto;
+  margin-top: 8px;
+}
+
+.check-checkbox {
+  display: none;
+}
+
+.check-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  border: 0 solid #ccc;
+  border-radius: 16px;
+  margin: 0;
+  box-shadow: 0px 4px 4px rgba(50, 50, 71, 0.08), 0px 4px 8px rgba(50, 50, 71, 0.06);
+}
+
+.check-inner {
+  display: block;
+  width: 200%;
+  margin-left: -100%;
+  transition: margin 0.3s ease-in 0s;
+}
+
+.check-inner::before, .check-inner::after {
+  float: left;
+  width: 50%;
+  height: 20px;
+  box-sizing: border-box;
+}
+
+.check-inner:before {
+  content: "";
+  background-color: #dacfcf;
+}
+
+.check-inner::after {
+  content: "";
+  background-color: #cfc6c6;
+  box-shadow: 0px 4px 4px rgba(50, 50, 71, 0.08), 0px 4px 8px rgba(50, 50, 71, 0.06);
+}
+
+.check-switch {
+  width: 16px;
+  height: 16px;
+  margin: 2px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 16px;
+  border-radius: 100%;
+  transition: all 0.3s ease-in 0s;
+  background-color: #F5F5F5;
+}
+
+.check-checkbox:checked + .check-label .check-inner {
+  margin-left: 0;
+}
+
+.check-checkbox:checked + .check-label .check-switch {
+  right: 0px;
+  background: #2BE080;
+}

@@ -1,0 +1,6 @@
+.panelleft {
+  display: flex;
+  width: 347.5px;
+  background-color: rgb(142, 157, 209);
+  flex-direction: column;
+}

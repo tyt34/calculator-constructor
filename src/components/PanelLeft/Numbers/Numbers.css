@@ -1,0 +1,11 @@
+.numbers {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 240px;
+  height: 224px;
+  background-color: rgb(173, 131, 139);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 12px;
+}

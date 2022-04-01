@@ -1,0 +1,57 @@
+.button {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(194, 142, 127);
+}
+
+.button__small {
+  width: 52px;
+  height: 48px;
+  margin-top: 4px;
+}
+
+.button__big {
+  width: 152px;
+  height: 48px;
+  margin-top: 4px;
+  margin-left: 4px;
+}
+
+.button__small:first-child {
+  margin-left: 4px;
+}
+
+.button__small:last-child {
+  margin-right: 4px;
+}
+
+.button__normal {
+  width: 72px;
+  height: 48px;
+  margin-top: 4px;
+}
+
+.button__normal:nth-child(3n+1) {
+  margin-left: 4px;
+}
+
+.button__normal:nth-child(3n) {
+  margin-right: 4px;
+}
+
+.button__normal:last-child {
+  margin-right: 4px;
+}
+
+.button__huge {
+  width: 232px;
+  height: 64px;
+  margin-left: 4px;
+  margin-top: 4px;
+  background-color: #5D5FEF;
+}
+
+.button__equal {
+  margin-top: 20px;
+  color: white;
+}

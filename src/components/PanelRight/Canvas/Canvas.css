@@ -1,0 +1,39 @@
+.canvas {
+  display: flex;
+  flex-direction: column;
+  width: 243px;
+  height: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgb(139, 210, 208);
+  margin-top: 30px;
+  border: 2px dashed black;
+}
+
+.canvas__img {
+  width: 20px;
+  height: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 199px;
+}
+
+.canvas__up {
+  color: #5D5FEF;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 12px;
+  margin-bottom: 0px;
+}
+
+.canvas__bottom {
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center
+}

@@ -1,0 +1,6 @@
+.panelright {
+  display: flex;
+  width: 347.5px;
+  background-color: rgb(189, 214, 232);
+  flex-direction: column;
+}
