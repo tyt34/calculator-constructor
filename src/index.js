@@ -4,10 +4,31 @@ import './index.css';
 import App from './components/App/App';
 import reportWebVitals from './reportWebVitals';
 
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+
+const defaultState = {
+  check: false
+}
+
+const reducer = (state = defaultState, action) => {
+  switch (action.type) {
+    case "changeCheck":
+      return {...state, check: !state.check}
+    default:
+      return state
+  }
+}
+
+const store = createStore(reducer)
+
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );
 
