@@ -1,8 +1,13 @@
 import './Button.css'
 
 function Button(props) {
+  //console.log('Button ', props)
   function secClass() {
-    return 'button '+props.needClass
+    if (props.text === '0') {
+      return 'button button__big'
+    } else {
+      return 'button '+props.secondClass
+    }
   }
 
   return (
@@ -12,7 +17,7 @@ function Button(props) {
         className={secClass()}
       >
         <p
-          className={props.pClass}
+          className={props.thirdClass}
         >
           {props.text}
         </p>
@@ -22,3 +27,19 @@ function Button(props) {
 }
 
 export default Button
+/*
+return (
+  <>
+    <section
+      className="button"
+      className={secClass()}
+    >
+      <p
+        className={props.pClass}
+      >
+        {props.text}
+      </p>
+    </section>
+  </>
+)
+*/

@@ -1,11 +1,16 @@
 import './Numbers.css'
 import Button from '../Button/Button'
+import { useSelector } from 'react-redux'
 
 function Numbers(props) {
+  const checkState = useSelector( state => state.check)
 
   return (
     <>
-      <section className="numbers">
+      <section
+        className="numbers"
+        draggable={checkState}
+      >
         <Button
           needClass="button__normal"
           text='7'

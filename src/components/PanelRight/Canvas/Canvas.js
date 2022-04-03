@@ -2,10 +2,14 @@ import './Canvas.css'
 import canvas__img from "../../../images/img.png"
 
 function Canvas(props) {
+  //console.log(props)
 
   return (
     <>
-      <section className="canvas">
+      <section
+        className="canvas"
+        onDrop={props.onDrop}
+      >
         <img
           className="canvas__img"
           alt="Изображение, которое показывает назначение данного элемента"
