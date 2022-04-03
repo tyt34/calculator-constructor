@@ -16,9 +16,10 @@ function PanelLeft(props) {
   const checkState = useSelector( state => state.check)
 
   React.useEffect( () => {
-    console.log('Left-Panel checkState ', checkState)
+    //console.log('Left-Panel checkState ', checkState)
   }, [checkState])
 
+  /*
   function dragOverHandler(e) {
     console.log(' -> 0 <-')
     e.preventDefault()
@@ -40,10 +41,13 @@ function PanelLeft(props) {
     console.log(' -> 4 <-')
     e.preventDefault()
   }
+  */
 
   return (
     <>
-      <section className="panelleft">
+      <section
+        className="panelleft"
+      >
         {leftPanel.map( (el) =>
           (
             <PartOfCalc
@@ -52,55 +56,17 @@ function PanelLeft(props) {
               thirdClass={el.thirdClass}
               buttons={el.buttons}
               key={el.id}
-              onDragOver={ (e) => {dragOverHandler(e)} }
-              onDragLeave={ (e) => {dragLeaveHandler(e)} }
-              onDragStart={ (e) => {dragStartHandler(e) }}
-              onDragEnd={ (e) => {dragEndHandler(e)} }
-              onDrop={ (e) => {dropHandler(e)} }
+              onDragOver={ (e) => {props.dragOverHandler(e)} }
+              onDragLeave={ (e) => {props.dragLeaveHandler(e)} }
+              onDragStart={ (e) => {props.dragStartHandler(e) }}
+              onDragEnd={ (e) => {props.dragEndHandler(e)} }
+              onDrop={ (e) => {props.dropHandler(e)} }
             />
           )
         )}
       </section>
     </>
   )
-
-  /*
-  return (
-    <>
-      <section className="panelleft">
-        <Display
-          result='0'
-          onDragOver={ (e) => {dragOverHandler(e)} }
-          onDragLeave={ (e) => {dragLeaveHandler(e)} }
-          onDragStart={ (e) => {dragStartHandler(e) }}
-          onDragEnd={ (e) => {dragEndHandler(e)} }
-          onDrop={ (e) => {dropHandler(e)} }
-        />
-        <Operations
-          onDragOver={ (e) => {dragOverHandler(e)} }
-          onDragLeave={ (e) => {dragLeaveHandler(e)} }
-          onDragStart={ (e) => {dragStartHandler(e) }}
-          onDragEnd={ (e) => {dragEndHandler(e)} }
-          onDrop={ (e) => {dropHandler(e)} }
-        />
-        <Numbers
-          onDragOver={ (e) => {dragOverHandler(e)} }
-          onDragLeave={ (e) => {dragLeaveHandler(e)} }
-          onDragStart={ (e) => {dragStartHandler(e) }}
-          onDragEnd={ (e) => {dragEndHandler(e)} }
-          onDrop={ (e) => {dropHandler(e)} }
-        />
-        <Equal
-          onDragOver={ (e) => {dragOverHandler(e)} }
-          onDragLeave={ (e) => {dragLeaveHandler(e)} }
-          onDragStart={ (e) => {dragStartHandler(e) }}
-          onDragEnd={ (e) => {dragEndHandler(e)} }
-          onDrop={ (e) => {dropHandler(e)} }
-        />
-      </section>
-    </>
-  )
-  */
 }
 
 export default PanelLeft
@@ -111,4 +77,42 @@ onDragLeave={ (e) => {dragLeaveHandler(e)} }
 onDragStart={ (e) => {dragStartHandler(e, board) }}
 onDragEnd={ (e) => {dragEndHandler(e)} }
 onDrop={ (e) => {dropHandler(e, board)} }
+*/
+
+/*
+return (
+  <>
+    <section className="panelleft">
+      <Display
+        result='0'
+        onDragOver={ (e) => {dragOverHandler(e)} }
+        onDragLeave={ (e) => {dragLeaveHandler(e)} }
+        onDragStart={ (e) => {dragStartHandler(e) }}
+        onDragEnd={ (e) => {dragEndHandler(e)} }
+        onDrop={ (e) => {dropHandler(e)} }
+      />
+      <Operations
+        onDragOver={ (e) => {dragOverHandler(e)} }
+        onDragLeave={ (e) => {dragLeaveHandler(e)} }
+        onDragStart={ (e) => {dragStartHandler(e) }}
+        onDragEnd={ (e) => {dragEndHandler(e)} }
+        onDrop={ (e) => {dropHandler(e)} }
+      />
+      <Numbers
+        onDragOver={ (e) => {dragOverHandler(e)} }
+        onDragLeave={ (e) => {dragLeaveHandler(e)} }
+        onDragStart={ (e) => {dragStartHandler(e) }}
+        onDragEnd={ (e) => {dragEndHandler(e)} }
+        onDrop={ (e) => {dropHandler(e)} }
+      />
+      <Equal
+        onDragOver={ (e) => {dragOverHandler(e)} }
+        onDragLeave={ (e) => {dragLeaveHandler(e)} }
+        onDragStart={ (e) => {dragStartHandler(e) }}
+        onDragEnd={ (e) => {dragEndHandler(e)} }
+        onDrop={ (e) => {dropHandler(e)} }
+      />
+    </section>
+  </>
+)
 */

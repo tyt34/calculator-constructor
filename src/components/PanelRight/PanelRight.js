@@ -3,17 +3,20 @@ import CheckBox from './CheckBox/CheckBox'
 import Canvas from './Canvas/Canvas'
 
 function PanelRight(props) {
-  const drop = (e) => {
-    e.preventDefault()
-    console.log(' -_--> 5 <--_-')
+  //console.log(' R P ', props)
+  /*
+  function dropCardHandler(e) {
+    console.log(' --- 5 ---')
   }
+  */
 
   return (
     <>
       <section className="panelright">
         <CheckBox />
         <Canvas
-          onDrop={drop}
+          dragOverHandler={props.dragOverHandler}
+          dropCardHandler={props.dropCardHandler}
         />
       </section>
     </>

@@ -13,7 +13,7 @@ function CheckBox(props) {
 
   React.useEffect( () => {
     //console.log(' check -> ', check)
-    console.log(' checkState ', checkState)
+    //console.log(' checkState ', checkState)
   },[checkState])
 
   return (

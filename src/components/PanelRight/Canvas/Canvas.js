@@ -2,13 +2,14 @@ import './Canvas.css'
 import canvas__img from "../../../images/img.png"
 
 function Canvas(props) {
-  //console.log(props)
+  //console.log('Canvas ', props)
 
   return (
     <>
       <section
         className="canvas"
-        onDrop={props.onDrop}
+        onDragOver={ (e) => {props.dragOverHandler(e)} }
+        onDrop={ (e) => {props.dropCardHandler(e)} }
       >
         <img
           className="canvas__img"
