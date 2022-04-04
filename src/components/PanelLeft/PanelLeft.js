@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import './PanelLeft.css'
-import Display from './Display/Display'
-import Equal from './Equal/Equal'
-import Numbers from './Numbers/Numbers'
-import Operations from './Operations/Operations'
+//import Display from './Display/Display'
+//import Equal from './Equal/Equal'
+//import Numbers from './Numbers/Numbers'
+//import Operations from './Operations/Operations'
 import { useSelector } from 'react-redux'
 import {
   arrayButtons,
 } from '../../utils/constants.js'
-import PartOfCalc from './PartOfCalc/PartOfCalc'
+import PartOfCalc from '../PartOfCalc/PartOfCalc'
 
 
 function PanelLeft(props) {
@@ -18,30 +18,6 @@ function PanelLeft(props) {
   React.useEffect( () => {
     //console.log('Left-Panel checkState ', checkState)
   }, [checkState])
-
-  /*
-  function dragOverHandler(e) {
-    console.log(' -> 0 <-')
-    e.preventDefault()
-  }
-
-  function dragLeaveHandler(e) {
-    console.log(' -> 1 <-')
-  }
-
-  function dragStartHandler(e) {
-    console.log(' -> 2 <-')
-  }
-
-  function dragEndHandler(e) {
-    console.log(' -> 3 <-')
-  }
-
-  function dropHandler(e) {
-    console.log(' -> 4 <-')
-    e.preventDefault()
-  }
-  */
 
   return (
     <>
@@ -58,9 +34,10 @@ function PanelLeft(props) {
               key={el.id}
               onDragOver={ (e) => {props.dragOverHandler(e)} }
               onDragLeave={ (e) => {props.dragLeaveHandler(e)} }
-              onDragStart={ (e) => {props.dragStartHandler(e) }}
+              onDragStart={ (e) => {props.dragStartHandler(e, el) }}
               onDragEnd={ (e) => {props.dragEndHandler(e)} }
-              onDrop={ (e) => {props.dropHandler(e)} }
+              onDrop={ (e) => {props.dropHandler(e, el)} }
+              status={'constructor'}
             />
           )
         )}
@@ -115,4 +92,28 @@ return (
     </section>
   </>
 )
+*/
+
+/*
+function dragOverHandler(e) {
+  console.log(' -> 0 <-')
+  e.preventDefault()
+}
+
+function dragLeaveHandler(e) {
+  console.log(' -> 1 <-')
+}
+
+function dragStartHandler(e) {
+  console.log(' -> 2 <-')
+}
+
+function dragEndHandler(e) {
+  console.log(' -> 3 <-')
+}
+
+function dropHandler(e) {
+  console.log(' -> 4 <-')
+  e.preventDefault()
+}
 */
