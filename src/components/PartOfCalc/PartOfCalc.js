@@ -10,7 +10,13 @@ function PartOfCalc(props) {
     console.log(' -> ')
     fullMainClass = props.mainClass + ' ' + props.mainClass + '__work'
   } else {
-    fullMainClass = props.mainClass + ' ' + props.mainClass + '__constructor'
+    if (!props.remove) { // тут должно появиться опасити
+      console.log(' true rem', props.remove)
+      fullMainClass = props.mainClass + ' ' + props.mainClass + '__constructor' + ' ' + props.mainClass + '__remove'
+    } else {
+      console.log(' false rem', props)
+      fullMainClass = props.mainClass + ' ' + props.mainClass + '__constructor'
+    }
   }
   /*
   let display = false
@@ -24,7 +30,7 @@ function PartOfCalc(props) {
         (
           <section
             className={fullMainClass}
-            draggable={checkState}
+            draggable={props.remove}
             onDragOver={props.onDragOver}
             onDragLeave={props.onDragLeave}
             onDragStart={props.onDragStart}

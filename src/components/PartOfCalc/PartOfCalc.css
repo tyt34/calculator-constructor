@@ -7,12 +7,18 @@
   margin-right: auto;
 }
 
-.display__constructor { 
+.display__constructor {
   margin-top: 106px;
+  cursor: pointer;
 }
 
 .display__work {
   margin-top: 8px;
+}
+
+.display__remove {
+  opacity: 0.4;
+  cursor: default;
 }
 
 .display__indicator {
@@ -45,10 +51,16 @@
 
 .equal__constructor {
   margin-top: 12px;
+  cursor: pointer;
 }
 
 .equal__work {
   margin-top: 8px;
+}
+
+.equal__remove {
+  opacity: 0.4;
+  cursor: default;
 }
 
 .numbers {
@@ -64,10 +76,16 @@
 
 .numbers__constructor {
   margin-top: 12px;
+  cursor: pointer;
 }
 
 .numbers__work {
   margin-top: 8px;
+}
+
+.numbers__remove {
+  opacity: 0.4;
+  cursor: default;
 }
 
 .operations {
@@ -82,8 +100,14 @@
 
 .operations__constructor {
   margin-top: 12px;
+  cursor: pointer;
 }
 
 .operations__work {
   margin-top: 8px;
+}
+
+.operations__remove {
+  opacity: 0.4;
+  cursor: default;
 }

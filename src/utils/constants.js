@@ -3,7 +3,8 @@ const arrayButtons = [
     id: 1,
     mainClass: 'display',
     secondClass: 'display__indicator',
-    thirdClass: 'display__text'
+    thirdClass: 'display__text',
+    remove: true,
   },
   {
     id: 2,
@@ -14,7 +15,8 @@ const arrayButtons = [
       {id: 2, text: 'x'},
       {id: 3, text: '-'},
       {id: 4, text: '+'}
-    ]
+    ],
+    remove: true,
   },
   {
     id: 3,
@@ -32,7 +34,8 @@ const arrayButtons = [
       {id: 13, text: '9'},
       {id: 14, text: '0'},
       {id: 15, text: ','},
-    ]
+    ],
+    remove: true,
   },
   {
     id: 4,
@@ -41,7 +44,8 @@ const arrayButtons = [
     thirdClass: 'button__equal',
     buttons: [
       {id: 16, text: '='},
-    ]
+    ],
+    remove: true,
   }
 ]
 

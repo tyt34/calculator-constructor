@@ -35,6 +35,7 @@ function PanelRight(props) {
               dragOverHandler={props.dragOverHandler}
               dropCardHandler={props.dropCardHandler}
               elementsOfCanvas={props.elementsOfCanvas}
+              dragLeaveHandler={props.dragLeaveHandler}
             />
           )
         }

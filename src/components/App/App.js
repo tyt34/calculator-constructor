@@ -2,9 +2,13 @@ import './App.css'
 import PanelLeft from '../PanelLeft/PanelLeft'
 import PanelRight from '../PanelRight/PanelRight'
 import React, { useState } from 'react'
+import {
+  arrayButtons,
+} from '../../utils/constants.js'
 
 function App() {
   const [elementsOfCanvas, setElementsOfCanvas] = useState([])
+  const [leftPanel, setLeftPanel] = useState(arrayButtons)
   const [currentItem, setCurrentItem] = useState(null)
 
   function dragOverHandler(e) {
@@ -33,7 +37,24 @@ function App() {
   function dropCardHandler(e) {
     e.preventDefault();
     console.log(' --- 5 ---', currentItem.mainClass)
+    //currentItem.remove = true
+    //setLeftPanel( leftPanel => [...leftPanel, currentItem])
+    let newState = leftPanel.map( item => {
+      //console.log(' -> ', item)
+      //console.log(' current ', currentItem)
+      if (item.id === currentItem.id) {
+        item.remove = false
+        return item
+      } else {
+        return item
+      }
+    })
+    //console.log('newState - - ', newState)
+    setLeftPanel(newState)
     setElementsOfCanvas( elementsOfCanvas => [...elementsOfCanvas, currentItem])
+    /*
+      это простой способ запушить новый элемент в массив useState
+    */
     /*
     if (elementsOfCanvas.length === 0) {
       //console.log(' cur it -> ', currentItem)
@@ -57,11 +78,14 @@ function App() {
         dragStartHandler={dragStartHandler}
         dragEndHandler={dragEndHandler}
         dropHandler={dropHandler}
+        leftPanel={leftPanel}
       />
       <PanelRight
         dragOverHandler={dragOverHandler}
         dropCardHandler={dropCardHandler}
         elementsOfCanvas={elementsOfCanvas}
+
+        dragLeaveHandler={dragLeaveHandler}
       />
     </section>
   )

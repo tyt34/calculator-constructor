@@ -5,15 +5,21 @@ import './PanelLeft.css'
 //import Numbers from './Numbers/Numbers'
 //import Operations from './Operations/Operations'
 import { useSelector } from 'react-redux'
+/*
 import {
   arrayButtons,
 } from '../../utils/constants.js'
+*/
 import PartOfCalc from '../PartOfCalc/PartOfCalc'
 
 
 function PanelLeft(props) {
-  const [leftPanel, setLeftPanel] = useState(arrayButtons)
+  //const [leftPanel, setLeftPanel] = useState(arrayButtons)
   const checkState = useSelector( state => state.check)
+
+  React.useEffect( () => {
+    console.log('Left-Panel ', props.leftPanel)
+  }, [props.leftPanel])
 
   React.useEffect( () => {
     //console.log('Left-Panel checkState ', checkState)
@@ -24,7 +30,7 @@ function PanelLeft(props) {
       <section
         className="panelleft"
       >
-        {leftPanel.map( (el) =>
+        {props.leftPanel.map( (el) =>
           (
             <PartOfCalc
               mainClass={el.mainClass}
@@ -38,6 +44,7 @@ function PanelLeft(props) {
               onDragEnd={ (e) => {props.dragEndHandler(e)} }
               onDrop={ (e) => {props.dropHandler(e, el)} }
               status={'constructor'}
+              remove={el.remove}
             />
           )
         )}
