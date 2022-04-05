@@ -18,7 +18,7 @@ function PanelLeft(props) {
   const checkState = useSelector( state => state.check)
 
   React.useEffect( () => {
-    console.log('Left-Panel ', props.leftPanel)
+    //console.log('Left-Panel ', props.leftPanel)
   }, [props.leftPanel])
 
   React.useEffect( () => {

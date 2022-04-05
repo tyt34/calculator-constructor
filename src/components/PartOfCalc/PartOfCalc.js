@@ -7,14 +7,14 @@ function PartOfCalc(props) {
   let fullMainClass
   const checkState = useSelector( state => state.check)
   if (props.status === 'work') {
-    console.log(' -> ')
+    //console.log(' -> ')
     fullMainClass = props.mainClass + ' ' + props.mainClass + '__work'
   } else {
     if (!props.remove) { // тут должно появиться опасити
-      console.log(' true rem', props.remove)
+      //console.log(' true rem', props.remove)
       fullMainClass = props.mainClass + ' ' + props.mainClass + '__constructor' + ' ' + props.mainClass + '__remove'
     } else {
-      console.log(' false rem', props)
+      //console.log(' false rem', props)
       fullMainClass = props.mainClass + ' ' + props.mainClass + '__constructor'
     }
   }
@@ -30,7 +30,7 @@ function PartOfCalc(props) {
         (
           <section
             className={fullMainClass}
-            draggable={props.remove}
+            draggable={true}
             onDragOver={props.onDragOver}
             onDragLeave={props.onDragLeave}
             onDragStart={props.onDragStart}
@@ -48,7 +48,7 @@ function PartOfCalc(props) {
         ) : (
           <section
             className={fullMainClass}
-            draggable={checkState}
+            draggable={props.remove}
             onDragOver={props.onDragOver}
             onDragLeave={props.onDragLeave}
             onDragStart={props.onDragStart}

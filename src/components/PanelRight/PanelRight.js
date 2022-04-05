@@ -8,8 +8,10 @@ function PanelRight(props) {
   //console.log(props)
   React.useEffect( () => {
     //console.log('Left-Panel checkState ', checkState)
-    console.log(' now els ', props.elementsOfCanvas)
+    //console.log(' now els ', props.elementsOfCanvas)
   }, [props.elementsOfCanvas])
+
+
 
   //console.log(' R P ', props)
   /*
@@ -29,6 +31,7 @@ function PanelRight(props) {
               dragOverHandler={props.dragOverHandler}
               dropCardHandler={props.dropCardHandler}
               elementsOfCanvas={props.elementsOfCanvas}
+
             />
           ) : (
             <WorkPlace
@@ -36,6 +39,9 @@ function PanelRight(props) {
               dropCardHandler={props.dropCardHandler}
               elementsOfCanvas={props.elementsOfCanvas}
               dragLeaveHandler={props.dragLeaveHandler}
+              dropHandler={props.dropHandler}
+              dragEndHandler={props.dragEndHandler}
+              dragStartHandler={props.dragStartHandler}
             />
           )
         }

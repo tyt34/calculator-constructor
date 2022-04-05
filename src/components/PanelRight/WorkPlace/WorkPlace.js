@@ -2,7 +2,7 @@ import './WorkPlace.css'
 import PartOfCalc from '../../PartOfCalc/PartOfCalc'
 
 function WorkPlace(props) {
-  console.log('WorkPlace ', props)
+  //console.log('WorkPlace ', props)
 
   return (
     <>
