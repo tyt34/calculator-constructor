@@ -14,8 +14,13 @@ import PartOfCalc from '../PartOfCalc/PartOfCalc'
 
 
 function PanelLeft(props) {
+  //console.log('PanelLeft ', props)
   //const [leftPanel, setLeftPanel] = useState(arrayButtons)
   const checkState = useSelector( state => state.check)
+
+  props.items.map( i => {
+    //console.log(i);
+  })
 
   React.useEffect( () => {
     //console.log('Left-Panel ', props.leftPanel)
@@ -30,7 +35,7 @@ function PanelLeft(props) {
       <section
         className="panelleft"
       >
-        {props.leftPanel.map( (el) =>
+        {props.items.map( (el) =>
           (
             <PartOfCalc
               mainClass={el.mainClass}
@@ -38,13 +43,15 @@ function PanelLeft(props) {
               thirdClass={el.thirdClass}
               buttons={el.buttons}
               key={el.id}
-              onDragOver={ (e) => {props.dragOverHandler(e)} }
-              onDragLeave={ (e) => {props.dragLeaveHandler(e)} }
-              onDragStart={ (e) => {props.dragStartHandler(e, el) }}
-              onDragEnd={ (e) => {props.dragEndHandler(e)} }
-              onDrop={ (e) => {props.dropHandler(e, el)} }
               status={'constructor'}
               remove={el.remove}
+              dragOverHandler={props.dragOverHandler}
+              dragLeaveHandler={props.dragLeaveHandler}
+              dragStartHandler={props.dragStartHandler}
+              dragEndHandler={props.dragEndHandler}
+              dropHandler={props.dropHandler}
+
+              dropCardHandler={props.dropCardHandler}
             />
           )
         )}
@@ -54,6 +61,22 @@ function PanelLeft(props) {
 }
 
 export default PanelLeft
+/*
+<PartOfCalc
+  mainClass={el.mainClass}
+  secondClass={el.secondClass}
+  thirdClass={el.thirdClass}
+  buttons={el.buttons}
+  key={el.id}
+  onDragOver={ (e) => {props.dragOverHandler(e)} }
+  onDragLeave={ (e) => {props.dragLeaveHandler(e)} }
+  onDragStart={ (e) => {props.dragStartHandler(e, el) }}
+  onDragEnd={ (e) => {props.dragEndHandler(e)} }
+  onDrop={ (e) => {props.dropHandler(e, el)} }
+  status={'constructor'}
+  remove={el.remove}
+/>
+*/
 
 /*
 onDragOver={ (e) => {dragOverHandler(e)} }

@@ -5,6 +5,7 @@ import WorkPlace from './WorkPlace/WorkPlace'
 import React from 'react'
 
 function PanelRight(props) {
+  //console.log('PanelRight ', props)
   //console.log(props)
   React.useEffect( () => {
     //console.log('Left-Panel checkState ', checkState)
@@ -25,23 +26,24 @@ function PanelRight(props) {
       <section className="panelright">
         <CheckBox />
         {
-          props.elementsOfCanvas.length === 0 ?
+          props.items.length === 0 ?
           (
             <Canvas
+              items={props.items}
               dragOverHandler={props.dragOverHandler}
-              dropCardHandler={props.dropCardHandler}
-              elementsOfCanvas={props.elementsOfCanvas}
 
+              dropCardHandler={props.dropCardHandler}
             />
           ) : (
             <WorkPlace
+              items={props.items}
               dragOverHandler={props.dragOverHandler}
-              dropCardHandler={props.dropCardHandler}
-              elementsOfCanvas={props.elementsOfCanvas}
               dragLeaveHandler={props.dragLeaveHandler}
-              dropHandler={props.dropHandler}
-              dragEndHandler={props.dragEndHandler}
               dragStartHandler={props.dragStartHandler}
+              dragEndHandler={props.dragEndHandler}
+              dropHandler={props.dropHandler}
+
+              dropCardHandler={props.dropCardHandler}
             />
           )
         }
