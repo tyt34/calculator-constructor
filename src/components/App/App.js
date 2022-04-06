@@ -24,17 +24,13 @@ function App() {
 
   React.useEffect( () => {
     if (currentItem !== null) {
-      console.log(' 1: current >', currentItem.mainClass, '< >', currentBoard.id, '<')
+      //console.log(' 1: current >', currentItem.mainClass, '< >', currentBoard.id, '<')
     }
   }, [currentItem, currentBoard])
 
   function dragOverHandler(e) { //просто двигаешь
     //console.log(' -> 0 <-')
     e.preventDefault()
-    //console.log(e.target)
-    //console.log(e.currentTarget)
-    //console.log(e.target.className)
-    //console.log(e.target.children)
     let goodClassArray = [
       'numbers numbers__work',
       'display display__work',
@@ -42,20 +38,13 @@ function App() {
       'equal equal__work'
     ]
     const coincidence = (el) => {
-      //return el === e.target.className
       return el === e.currentTarget.className
     }
-    //console.log(goodClassArray.some(coincidence))
     if (currentItem.mainClass !== 'display') {
       if (goodClassArray.some(coincidence)) {
         e.currentTarget.style.boxShadow = '0px 7px 0px -2px #5D5FEF'
-        //e.target.style.background = 'blue'
       }
     }
-
-    /*
-    подсветка элемента вместо кого он будет установлен
-    */
   }
 
   function dragLeaveHandler(e) { // просто перемещение
@@ -80,21 +69,27 @@ function App() {
     e.preventDefault()
     console.log(' -> 4 <-', board.id, ' / ', el.mainClass)
     if ((currentBoard.id !== 'left') || (board.id !== 'left')) {
+      console.log(' --_-> 4 <--_- ')
       const currentIndex = currentBoard.items.indexOf(currentItem)
-      currentBoard.items.splice(currentIndex, 1)
       const dropIndex = board.items.indexOf(el)
-      board.items.splice(dropIndex+1, 0, currentItem)
-      setBoards(boards.map(b => {
-        if (b.id === board.id) {
-          return board
-        }
-        if (b.id === currentBoard.id) {
-          return currentBoard
-        }
-        return b
-      }))
-      setRemove()
-      displayTop()
+      console.log(' -> ', currentIndex)
+      console.log(' -> ', dropIndex)
+      if ((dropIndex !== -1) && (currentIndex !== dropIndex)) {
+        currentBoard.items.splice(currentIndex, 1)
+        board.items.splice(dropIndex+1, 0, currentItem)
+        setBoards(boards.map(b => {
+          if (b.id === board.id) {
+            return board
+          }
+          if (b.id === currentBoard.id) {
+            return currentBoard
+          }
+          return b
+        }))
+        setRemove()
+        displayTop()
+      }
+
     }
     e.target.style.boxShadow = 'none'
     e.currentTarget.style.boxShadow = 'none'
@@ -121,6 +116,7 @@ function App() {
       const currentIndex = currentBoard.items.indexOf(currentItem) // номер элемента слева
       if (board.id !== currentBoard.id) {
         if (currentIndex > -1) {
+          console.log(' --_-> 5 <-_-- ')
           board.items.push(currentItem)
           setRemove()
           currentBoard.items.splice(currentIndex, 1)

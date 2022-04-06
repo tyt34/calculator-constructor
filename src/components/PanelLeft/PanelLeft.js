@@ -14,23 +14,7 @@ import PartOfCalc from '../PartOfCalc/PartOfCalc'
 
 
 function PanelLeft(props) {
-  //console.log('PanelLeft ', props)
-  //const [leftPanel, setLeftPanel] = useState(arrayButtons)
   const checkState = useSelector( state => state.check)
-  //const [copyButtons, setCopyButtons] = useState(arrayButtons)
-
-  arrayButtons.map( i => {
-    //console.log('1 i -> > ', i)
-  })
-
-  props.items.map( i => {
-    //console.log('2 i -> > ', i)
-  })
-  /*
-  copyButtons.map( i => {
-    //console.log('3 i -> > ', i)
-  })
-  */
 
   React.useEffect( () => {
     //console.log('Left-Panel ', props.leftPanel)

@@ -19,6 +19,17 @@ function PartOfCalc(props) {
     }
   }
 
+  function getDragable(rem) {
+    //console.log(rem)
+    if (rem === false) {
+      return false
+    } else if (rem === true) {
+      return true
+    } else {
+      return true
+    }
+  }
+
   return (
     <>
       {
@@ -26,7 +37,7 @@ function PartOfCalc(props) {
         (
           <section
             className={fullMainClass}
-            draggable={drag}
+            draggable={getDragable(props.remove)}
             onDragOver={props.onDragOver}
             onDragLeave={props.onDragLeave}
             onDragStart={props.onDragStart}
@@ -45,7 +56,7 @@ function PartOfCalc(props) {
         ) : (
           <section
             className={fullMainClass}
-            draggable={drag}
+            draggable={getDragable(props.remove)}
             onDragOver={props.onDragOver}
             onDragLeave={props.onDragLeave}
             onDragStart={props.onDragStart}
