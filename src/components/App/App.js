@@ -22,10 +22,6 @@ function App() {
   const [currentItem, setCurrentItem] = useState(null)
   const [currentBoard, setCurrentBoard] = useState(null)
 
-  cloneArrayButtons.map( i => {
-    //console.log('1 i -> > ', i)
-  })
-
   React.useEffect( () => {
     if (currentItem !== null) {
       console.log(' 1: current >', currentItem.mainClass, '< >', currentBoard.id, '<')
@@ -35,11 +31,37 @@ function App() {
   function dragOverHandler(e) { //просто двигаешь
     //console.log(' -> 0 <-')
     e.preventDefault()
+    //console.log(e.target)
+    //console.log(e.currentTarget)
+    //console.log(e.target.className)
+    //console.log(e.target.children)
+    let goodClassArray = [
+      'numbers numbers__work',
+      'display display__work',
+      'operations operations__work',
+      'equal equal__work'
+    ]
+    const coincidence = (el) => {
+      //return el === e.target.className
+      return el === e.currentTarget.className
+    }
+    //console.log(goodClassArray.some(coincidence))
+    if (currentItem.mainClass !== 'display') {
+      if (goodClassArray.some(coincidence)) {
+        e.currentTarget.style.boxShadow = '0px 7px 0px -2px #5D5FEF'
+        //e.target.style.background = 'blue'
+      }
+    }
+
+    /*
+    подсветка элемента вместо кого он будет установлен
+    */
   }
 
   function dragLeaveHandler(e) { // просто перемещение
     //console.log(' -> 1 <-')
-    //e.target.style.background = 'red'
+    e.target.style.boxShadow = 'none'
+    e.currentTarget.style.boxShadow = 'none'
   }
 
   function dragStartHandler(e, board, el) { // кого схватили
@@ -50,38 +72,17 @@ function App() {
 
   function dragEndHandler(e) {
     //console.log(' -> 3 <-')
+    e.target.style.boxShadow = 'none'
+    e.currentTarget.style.boxShadow = 'none'
   }
-
-  //console.log(true || false)
 
   function dropHandler(e, board, el) {
     e.preventDefault()
     console.log(' -> 4 <-', board.id, ' / ', el.mainClass)
-    console.log(' cur bor ', currentBoard.id)
-    console.log(' --- bor ', board.id)
     if ((currentBoard.id !== 'left') || (board.id !== 'left')) {
-      console.log(' --_--> 4 <--_--')
       const currentIndex = currentBoard.items.indexOf(currentItem)
-      //console.log(' 4 1 : ', currentIndex)
       currentBoard.items.splice(currentIndex, 1)
       const dropIndex = board.items.indexOf(el)
-      /*
-      console.log(' DI/CI ', dropIndex, '/', currentIndex)
-      let numForChange
-      if (dropIndex >= currentIndex) {
-        if (board.id !== currentBoard.id) {
-          console.log(' var 1 ')
-          numForChange = dropIndex + 1
-        } else {
-          console.log(' var 2')
-          numForChange = dropIndex + 1
-        }
-      } else {
-        console.log(' var 3 ')
-        numForChange = dropIndex
-      }
-      */
-      //board.items.splice(numForChange, 0, currentItem)
       board.items.splice(dropIndex+1, 0, currentItem)
       setBoards(boards.map(b => {
         if (b.id === board.id) {
@@ -93,29 +94,20 @@ function App() {
         return b
       }))
       setRemove()
-    } else {
-      /*
-      console.log(' -----------------------------')
-      console.log(currentBoard.id !== 'left')
-      console.log(board.id !== 'left')
-      console.log((currentBoard.id !== 'left') && (board.id !== 'left'))
-      */
+      displayTop()
     }
+    e.target.style.boxShadow = 'none'
+    e.currentTarget.style.boxShadow = 'none'
   }
 
   function dropCardHandler(e, board) {
-    //e.preventDefault()
     console.log(' --- 5 ---', board.id)
     if (board.items.length === 0) {
-      //console.log(' 0: get new item')
       board.items.push(currentItem)
       const currentIndex = currentBoard.items.indexOf(currentItem)
       currentBoard.items.splice(currentIndex, 1)
-
       setRemove()
-
       setBoards(boards.map(b => {
-        //console.log('b1: ', b.id, ' board: ', board.id)
         if (b.id === board.id) {
           return board
         }
@@ -124,23 +116,15 @@ function App() {
         }
         return b
       }))
+      displayTop()
     } else {
-      //console.log(' 2: arr not empty ')
       const currentIndex = currentBoard.items.indexOf(currentItem) // номер элемента слева
-      //console.log(' b1 bb: ', board.id) // доска куда отправлено
-      //console.log(' b2 cur bor: ', currentBoard.id) // доска откуда отправлено
-      //console.log(' b3 cur it: ', currentItem.mainClass) // что именно отправлено
-      //console.log(' currentIndex ', currentIndex)
-      //currentBoard.items.map( i => console.log(' элементы которые были до отправки ', i.mainClass))
       if (board.id !== currentBoard.id) {
         if (currentIndex > -1) {
-          console.log(' ---> ', currentBoard.id)
           board.items.push(currentItem)
-          //currentBoard
           setRemove()
           currentBoard.items.splice(currentIndex, 1)
           setBoards(boards.map(b => {
-            //console.log('b2: ', b)
             if (b.id === board.id) {
               return board
             }
@@ -149,17 +133,17 @@ function App() {
             }
             return b
           }))
-          //console.log(' -____-> ', boards[0].items)
+          displayTop()
         }
       }
     }
+    e.target.style.boxShadow = 'none'
+    e.currentTarget.style.boxShadow = 'none'
   }
 
   function setRemove() {
     arrayButtons.map( el => { // чтобы в левой части появилось опасити
-      //console.log(' 4: el ', el)
       if (el.id === currentItem.id) {
-        //console.log(' FIND ')
         el.remove = false
       }
     })
@@ -167,27 +151,27 @@ function App() {
 
   function setNotRemove(element) {
     arrayButtons.map( el => { // чтобы в левой части появилось опасити
-      //console.log(' 4: el ', el, element)
       if (el.id === element.id) {
-        //console.log(' FIND ')
         el.remove = true
       }
     })
   }
 
+
+
   const handleClick = (e, el) => {
     switch (e.detail) {
       case 1:
-        console.log("click")
+        //console.log("click")
         break
       case 2:
-        console.log("double click" , el)
+        //console.log("double click" , el)
         const currentIndex = boards[1].items.indexOf(el)
-        console.log(currentIndex)
+        //console.log(currentIndex)
         //boards[1].items.splice(currentIndex, 1)
         //boards[0].items.push(el)
-        console.log(boards[1].items)
-        console.log(boards[0].items)
+        //console.log(boards[1].items)
+        //console.log(boards[0].items)
 
         setBoards(boards.map(b => {
           //console.log('b2: ', b)
@@ -201,13 +185,41 @@ function App() {
           }
           //return b
         }))
-        console.log(boards)
+        //console.log(boards)
         setNotRemove(el)
+        displayTop()
         break
       case 3:
-        console.log("triple click")
+        //console.log("triple click")
         break
       default:
+    }
+  }
+
+  //box-shadow: 0px 7px 0px -2px #5D5FEF;
+
+  function displayTop() {
+    let displayInArray
+    boards[1].items.map( el => {
+      if (el.mainClass === 'display') return displayInArray = true
+    })
+    if (displayInArray) {
+      let newArr = []
+      boards[1].items.map( el => {
+        if (el.mainClass === 'display') newArr.push(el)
+      })
+      boards[1].items.map( el => {
+        if (el.mainClass !== 'display') newArr.push(el)
+      })
+      setBoards(boards.map(b => {
+        if (b.id === 'left') {
+          return b
+        }
+        if (b.id === 'right') {
+          b.items = newArr
+          return b
+        }
+      }))
     }
   }
 
