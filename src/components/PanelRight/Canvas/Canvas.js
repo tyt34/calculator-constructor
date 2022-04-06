@@ -18,7 +18,7 @@ function Canvas(props) {
       <section
         className="canvas"
         onDragOver={ (e) => {props.dragOverHandler(e)} }
-        onDrop={ (e) => {props.dropCardHandler(e)} }
+        onDrop={ (e) => {props.dropCardHandler(e, props.board)} }
 
         onDragEnter={ (e) => {cardEnterBoard(e)}}
         onDragLeave={ (e) => {cardLeaveBoard(e)}}

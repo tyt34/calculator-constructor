@@ -5,11 +5,11 @@ import './PanelLeft.css'
 //import Numbers from './Numbers/Numbers'
 //import Operations from './Operations/Operations'
 import { useSelector } from 'react-redux'
-/*
+
 import {
   arrayButtons,
 } from '../../utils/constants.js'
-*/
+
 import PartOfCalc from '../PartOfCalc/PartOfCalc'
 
 
@@ -17,25 +17,49 @@ function PanelLeft(props) {
   //console.log('PanelLeft ', props)
   //const [leftPanel, setLeftPanel] = useState(arrayButtons)
   const checkState = useSelector( state => state.check)
+  //const [copyButtons, setCopyButtons] = useState(arrayButtons)
+
+  arrayButtons.map( i => {
+    //console.log('1 i -> > ', i)
+  })
 
   props.items.map( i => {
-    //console.log(i);
+    //console.log('2 i -> > ', i)
   })
+  /*
+  copyButtons.map( i => {
+    //console.log('3 i -> > ', i)
+  })
+  */
 
   React.useEffect( () => {
     //console.log('Left-Panel ', props.leftPanel)
   }, [props.leftPanel])
-
+  /*
   React.useEffect( () => {
+    console.log(' ---------> > > > >')
     //console.log('Left-Panel checkState ', checkState)
-  }, [checkState])
+    arrayButtons.map( element => {
+      console.log(' 3 element: ', element.id)
+      props.items.map( item => {
+        console.log(' 4 it : ', item.id)
+        if (item.id === element.id) {
+          console.log(element.remove)
+          element.remove = true
+          console.log(element.remove)
+          //return element
+        }
+      })
+    })
+  })
+  */
 
   return (
     <>
       <section
         className="panelleft"
       >
-        {props.items.map( (el) =>
+        {arrayButtons.map( (el) =>
           (
             <PartOfCalc
               mainClass={el.mainClass}
@@ -45,13 +69,11 @@ function PanelLeft(props) {
               key={el.id}
               status={'constructor'}
               remove={el.remove}
-              dragOverHandler={props.dragOverHandler}
-              dragLeaveHandler={props.dragLeaveHandler}
-              dragStartHandler={props.dragStartHandler}
-              dragEndHandler={props.dragEndHandler}
-              dropHandler={props.dropHandler}
-
-              dropCardHandler={props.dropCardHandler}
+              onDragOver={ (e) => {props.dragOverHandler(e)} }
+              onDragLeave={ (e) => {props.dragLeaveHandler(e)} }
+              onDragStart={ (e) => {props.dragStartHandler(e, props.board, el) }}
+              onDragEnd={ (e) => {props.dragEndHandler(e)} }
+              onDrop={ (e) => {props.dropHandler(e, props.board, el)} }
             />
           )
         )}

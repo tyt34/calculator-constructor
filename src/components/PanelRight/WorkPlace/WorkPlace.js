@@ -4,14 +4,15 @@ import PartOfCalc from '../../PartOfCalc/PartOfCalc'
 function WorkPlace(props) {
   //console.log('WorkPlace ', props)
 
+
   return (
     <>
       <section
         className="work"
         onDragOver={ (e) => {props.dragOverHandler(e)} }
-        onDrop={ (e) => {props.dropCardHandler(e)} }
+        onDrop={ (e) => {props.dropCardHandler(e, props.board)} }
       >
-        {props.elementsOfCanvas.map( (el) =>
+        {props.items.map( (el) =>
           (
             <PartOfCalc
               mainClass={el.mainClass}
@@ -21,10 +22,12 @@ function WorkPlace(props) {
               key={el.id}
               onDragOver={ (e) => {props.dragOverHandler(e)} }
               onDragLeave={ (e) => {props.dragLeaveHandler(e)} }
-              onDragStart={ (e) => {props.dragStartHandler(e, el) }}
+              onDragStart={ (e) => {props.dragStartHandler(e, props.board, el) }}
               onDragEnd={ (e) => {props.dragEndHandler(e)} }
-              onDrop={ (e) => {props.dropHandler(e, el)} }
+              onDrop={ (e) => {props.dropHandler(e, props.board, el)} }
               status={'work'}
+              element={el}
+              handleClick={props.handleClick}
             />
           )
         )}
@@ -34,3 +37,12 @@ function WorkPlace(props) {
 }
 
 export default WorkPlace
+/*
+onClick={e => {
+  clearTimeout(this.timer); // Очищается ранее установленный таймер
+  this.timer = setTimeout(() => {
+    // Если было одиночное нажатие, то действие выполнится через 250мс
+    console.log("onClick");
+  }, 250);
+}}
+*/

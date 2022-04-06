@@ -30,13 +30,14 @@ function PanelRight(props) {
           (
             <Canvas
               items={props.items}
+              board={props.board}
               dragOverHandler={props.dragOverHandler}
-
               dropCardHandler={props.dropCardHandler}
             />
           ) : (
             <WorkPlace
               items={props.items}
+              board={props.board}
               dragOverHandler={props.dragOverHandler}
               dragLeaveHandler={props.dragLeaveHandler}
               dragStartHandler={props.dragStartHandler}
@@ -44,6 +45,8 @@ function PanelRight(props) {
               dropHandler={props.dropHandler}
 
               dropCardHandler={props.dropCardHandler}
+
+              handleClick={props.handleClick}
             />
           )
         }

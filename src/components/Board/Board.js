@@ -16,6 +16,7 @@ function Board(props) {
           <PanelLeft
             items={props.items}
             boardId={props.boardId}
+            board={props.board}
             dragOverHandler={props.dragOverHandler}
             dragLeaveHandler={props.dragLeaveHandler}
             dragStartHandler={props.dragStartHandler}
@@ -28,13 +29,16 @@ function Board(props) {
           <PanelRight
             items={props.items}
             boardId={props.boardId}
+            board={props.board}
             dragOverHandler={props.dragOverHandler}
             dragLeaveHandler={props.dragLeaveHandler}
             dragStartHandler={props.dragStartHandler}
             dragEndHandler={props.dragEndHandler}
             dropHandler={props.dropHandler}
-            
+
             dropCardHandler={props.dropCardHandler}
+
+            handleClick={props.handleClick}
           />
         )
       }

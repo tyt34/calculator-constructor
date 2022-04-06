@@ -1,27 +1,23 @@
 import './PartOfCalc.css'
 import { useSelector } from 'react-redux'
+import React, { useState } from 'react'
 import Button from './Button/Button'
 
 function PartOfCalc(props) {
-  //console.log('PartOfCalc ', props)
+  const [drag, setDrag] = useState(true)
   let fullMainClass
   const checkState = useSelector( state => state.check)
   if (props.status === 'work') {
-    //console.log(' -> ')
     fullMainClass = props.mainClass + ' ' + props.mainClass + '__work'
   } else {
     if (!props.remove) { // тут должно появиться опасити
-      //console.log(' true rem', props.remove)
-      fullMainClass = props.mainClass + ' ' + props.mainClass + '__constructor' + ' ' + props.mainClass + '__remove'
+      fullMainClass = props.mainClass + ' ' + props.mainClass + '__constructor ' + props.mainClass + '__remove'
+      //setDrag(false)
+      //console.log(props)
     } else {
-      //console.log(' false rem', props)
       fullMainClass = props.mainClass + ' ' + props.mainClass + '__constructor'
     }
   }
-  /*
-  let display = false
-  if (props.mainClass === 'display') display = true
-  */
 
   return (
     <>
@@ -30,12 +26,13 @@ function PartOfCalc(props) {
         (
           <section
             className={fullMainClass}
-            draggable={true}
+            draggable={drag}
             onDragOver={props.onDragOver}
             onDragLeave={props.onDragLeave}
             onDragStart={props.onDragStart}
             onDragEnd={props.onDragEnd}
             onDrop={props.onDrop}
+            onClick={(e) => {props.handleClick(e, props.element)}}
           >
             <section
               className={props.secondClass}
@@ -48,12 +45,13 @@ function PartOfCalc(props) {
         ) : (
           <section
             className={fullMainClass}
-            draggable={props.remove}
+            draggable={drag}
             onDragOver={props.onDragOver}
             onDragLeave={props.onDragLeave}
             onDragStart={props.onDragStart}
             onDragEnd={props.onDragEnd}
             onDrop={props.onDrop}
+            onClick={(e) => {props.handleClick(e, props.element)}}
           >
             {props.buttons.map( el =>
               (
