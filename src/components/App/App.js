@@ -2,12 +2,14 @@ import './App.css'
 //import PanelLeft from '../PanelLeft/PanelLeft'
 //import PanelRight from '../PanelRight/PanelRight'
 import Board from '../Board/Board'
+import { useSelector } from 'react-redux'
 import React, { useState } from 'react'
 import {
   arrayButtons,
 } from '../../utils/constants.js'
 
 function App() {
+  const checkState = useSelector( state => state.check)
   const cloneArrayButtons = [...arrayButtons]
   const [boards, setBoards] = useState([
     {
@@ -153,8 +155,6 @@ function App() {
     })
   }
 
-
-
   const handleClick = (e, el) => {
     switch (e.detail) {
       case 1:
@@ -168,22 +168,24 @@ function App() {
         //boards[0].items.push(el)
         //console.log(boards[1].items)
         //console.log(boards[0].items)
+        if (checkState) {
+          setBoards(boards.map(b => {
+            //console.log('b2: ', b)
+            if (b.id === 'left') {
+              boards[0].items.push(el)
+              return boards[0]
+            }
+            if (b.id === 'right') {
+              boards[1].items.splice(currentIndex, 1)
+              return boards[1]
+            }
+            //return b
+          }))
+          //console.log(boards)
+          setNotRemove(el)
+          displayTop()
+        }
 
-        setBoards(boards.map(b => {
-          //console.log('b2: ', b)
-          if (b.id === 'left') {
-            boards[0].items.push(el)
-            return boards[0]
-          }
-          if (b.id === 'right') {
-            boards[1].items.splice(currentIndex, 1)
-            return boards[1]
-          }
-          //return b
-        }))
-        //console.log(boards)
-        setNotRemove(el)
-        displayTop()
         break
       case 3:
         //console.log("triple click")

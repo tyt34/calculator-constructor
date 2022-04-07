@@ -6,20 +6,6 @@ import React from 'react'
 
 function PanelRight(props) {
   //console.log('PanelRight ', props)
-  //console.log(props)
-  React.useEffect( () => {
-    //console.log('Left-Panel checkState ', checkState)
-    //console.log(' now els ', props.elementsOfCanvas)
-  }, [props.elementsOfCanvas])
-
-
-
-  //console.log(' R P ', props)
-  /*
-  function dropCardHandler(e) {
-    console.log(' --- 5 ---')
-  }
-  */
 
   return (
     <>

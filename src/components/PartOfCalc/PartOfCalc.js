@@ -20,13 +20,20 @@ function PartOfCalc(props) {
   }
 
   function getDragable(rem) {
-    //console.log(rem)
+    //console.log(checkState)
     if (rem === false) {
+      //console.log(' var 1 ')
       return false
     } else if (rem === true) {
+      //console.log(' var 2 ')
       return true
-    } else {
+    } else if ((rem === undefined) && (checkState === true)) {
+      //console.log(' var 3 ')
       return true
+    } else if (checkState === false) {
+      //console.log(' var 4 ')
+      // тут еще курсор должен СТАТЬ обычным
+      return false
     }
   }
 
