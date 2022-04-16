@@ -15,6 +15,7 @@ function Button(props) {
       <section
         className="button"
         className={secClass()}
+        onClick={(e) => {props.onClick(props)}}
       >
         <p
           className={props.thirdClass}

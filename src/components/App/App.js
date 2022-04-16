@@ -156,41 +156,44 @@ function App() {
   }
 
   const handleClick = (e, el) => {
-    switch (e.detail) {
-      case 1:
-        //console.log("click")
-        break
-      case 2:
-        //console.log("double click" , el)
-        const currentIndex = boards[1].items.indexOf(el)
-        //console.log(currentIndex)
-        //boards[1].items.splice(currentIndex, 1)
-        //boards[0].items.push(el)
-        //console.log(boards[1].items)
-        //console.log(boards[0].items)
-        if (checkState) {
-          setBoards(boards.map(b => {
-            //console.log('b2: ', b)
-            if (b.id === 'left') {
-              boards[0].items.push(el)
-              return boards[0]
-            }
-            if (b.id === 'right') {
-              boards[1].items.splice(currentIndex, 1)
-              return boards[1]
-            }
-            //return b
-          }))
-          //console.log(boards)
-          setNotRemove(el)
-          displayTop()
-        }
+    //console.log(e, el)
+    if (el) {
+      switch (e.detail) {
+        case 1:
+          //console.log("click")
+          break
+        case 2:
+          //console.log("double click" , el)
+          const currentIndex = boards[1].items.indexOf(el)
+          //console.log(currentIndex)
+          //boards[1].items.splice(currentIndex, 1)
+          //boards[0].items.push(el)
+          //console.log(boards[1].items)
+          //console.log(boards[0].items)
+          if (checkState) {
+            setBoards(boards.map(b => {
+              //console.log('b2: ', b)
+              if (b.id === 'left') {
+                boards[0].items.push(el)
+                return boards[0]
+              }
+              if (b.id === 'right') {
+                boards[1].items.splice(currentIndex, 1)
+                return boards[1]
+              }
+              //return b
+            }))
+            //console.log(boards)
+            setNotRemove(el)
+            displayTop()
+          }
 
-        break
-      case 3:
-        //console.log("triple click")
-        break
-      default:
+          break
+        case 3:
+          //console.log("triple click")
+          break
+        default:
+      }
     }
   }
 

@@ -1,41 +1,65 @@
 import './PartOfCalc.css'
 import { useSelector } from 'react-redux'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Button from './Button/Button'
 
 function PartOfCalc(props) {
   const [drag, setDrag] = useState(true)
+  //const [textDisplay, setTextDisplay] = useState({text: '0'})
+  //console.log(textDisplay)
   let fullMainClass
   const checkState = useSelector( state => state.check)
   if (props.status === 'work') {
-    fullMainClass = props.mainClass + ' ' + props.mainClass + '__work'
+    //console.log(' work ', checkState)
+    if (checkState === true) {
+      fullMainClass = props.mainClass + ' ' + props.mainClass + '__work'
+    } else {
+      fullMainClass = props.mainClass + ' ' + props.mainClass + '__use'
+    }
   } else {
-    if (!props.remove) { // тут должно появиться опасити
+    //console.log(' not work ', checkState)
+    if (!props.remove) {
       fullMainClass = props.mainClass + ' ' + props.mainClass + '__constructor ' + props.mainClass + '__remove'
-      //setDrag(false)
-      //console.log(props)
     } else {
       fullMainClass = props.mainClass + ' ' + props.mainClass + '__constructor'
     }
   }
 
   function getDragable(rem) {
-    //console.log(checkState)
     if (rem === false) {
-      //console.log(' var 1 ')
       return false
     } else if (rem === true) {
-      //console.log(' var 2 ')
       return true
     } else if ((rem === undefined) && (checkState === true)) {
-      //console.log(' var 3 ')
       return true
     } else if (checkState === false) {
-      //console.log(' var 4 ')
-      // тут еще курсор должен СТАТЬ обычным
       return false
     }
   }
+  /*
+  function handleClickBut(e) {
+    //console.log(' -> ', e)
+    if (!checkState) {
+      console.log(' key press: ', e.text)
+      //setTextDisplay(e.text)
+      let newText = {text: e.text}
+      setTextDisplay({
+        text: [e.text]
+      })
+      //setTextDisplay('')
+      console.log(textDisplay)
+    }
+  }
+  */
+  /*
+  useEffect(() => { setTextDisplay(textDisplay) }, [])
+  */
+  /*
+  useEffect( () => {
+    console.log(' -> ', textDisplay)
+    setTextDisplay(textDisplay)
+  }, [textDisplay])
+  */
 
   return (
     <>
@@ -56,7 +80,7 @@ function PartOfCalc(props) {
               className={props.secondClass}
             >
               <p className={props.thirdClass}>
-                0
+                {props.textDisplay}
               </p>
             </section>
           </section>
@@ -78,6 +102,7 @@ function PartOfCalc(props) {
                   thirdClass={props.thirdClass}
                   text={el.text}
                   key={el.id}
+                  onClick={props.handleClickButt}
                 />
               )
             )}

@@ -1,7 +1,26 @@
 import './WorkPlace.css'
 import PartOfCalc from '../../PartOfCalc/PartOfCalc'
+import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 
 function WorkPlace(props) {
+  const [textDisplay, setTextDisplay] = useState('0')
+  const checkState = useSelector( state => state.check)
+
+  function handleClickButt(e) {
+    //console.log(' -> ', e)
+    if (!checkState) {
+      console.log(' key press: ', e.text, ' -> ', textDisplay)
+      //setTextDisplay(e.text)
+      //let newText = {text: e.text}
+      setTextDisplay(e.text)
+      /*
+      setTextDisplay(textDisplay => ([...textDisplay, ...newText]));
+      */
+      //setTextDisplay('')
+      //console.log(textDisplay)
+    }
+  }
   //console.log('WorkPlace ', props)
 
 
@@ -28,6 +47,9 @@ function WorkPlace(props) {
               status={'work'}
               element={el}
               handleClick={props.handleClick}
+
+              textDisplay={textDisplay}
+              handleClickButt={handleClickButt}
             />
           )
         )}

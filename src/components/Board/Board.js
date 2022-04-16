@@ -24,6 +24,8 @@ function Board(props) {
             dropHandler={props.dropHandler}
 
             dropCardHandler={props.dropCardHandler}
+
+            handleClick={props.handleClick}
           />
         ) : (
           <PanelRight

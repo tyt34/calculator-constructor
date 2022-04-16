@@ -42,6 +42,7 @@ function PanelLeft(props) {
     <>
       <section
         className="panelleft"
+        className={ checkState ? 'panelleft' : 'panelleft-disabled'}
       >
         {arrayButtons.map( (el) =>
           (
@@ -58,6 +59,10 @@ function PanelLeft(props) {
               onDragStart={ (e) => {props.dragStartHandler(e, props.board, el) }}
               onDragEnd={ (e) => {props.dragEndHandler(e)} }
               onDrop={ (e) => {props.dropHandler(e, props.board, el)} }
+
+              handleClick={props.handleClick}
+
+              textDisplay={'0'}
             />
           )
         )}

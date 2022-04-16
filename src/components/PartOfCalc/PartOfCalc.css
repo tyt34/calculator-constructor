@@ -5,7 +5,7 @@
   background-color: rgb(169, 228, 240);
   margin-left: auto;
   margin-right: auto;
-  
+
 }
 
 .display__constructor {
@@ -15,6 +15,10 @@
 
 .display__work {
   cursor: pointer;
+  margin-top: 8px;
+}
+
+.display__use {
   margin-top: 8px;
 }
 
@@ -61,6 +65,10 @@
   margin-top: 8px;
 }
 
+.equal__use {
+  margin-top: 8px;
+}
+
 .equal__remove {
   opacity: 0.4;
   cursor: default;
@@ -87,6 +95,10 @@
   margin-top: 8px;
 }
 
+.numbers__use {
+  margin-top: 8px;
+}
+
 .numbers__remove {
   opacity: 0.4;
   cursor: default;
@@ -109,6 +121,10 @@
 
 .operations__work {
   cursor: pointer;
+  margin-top: 8px;
+}
+
+.operations__use {
   margin-top: 8px;
 }
 
