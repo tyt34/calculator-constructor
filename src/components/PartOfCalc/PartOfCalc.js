@@ -1,25 +1,23 @@
 import './PartOfCalc.css'
 import { useSelector } from 'react-redux'
-//import React, { useState } from 'react'
-//import React from 'react'
+import React, { useMemo } from 'react'
 import Button from './Button/Button'
 
 function PartOfCalc(props) {
   const checkState = useSelector( state => state.check)
-  let fullMainClass // если делать через useState то будет ошибка Uncaught Error: Too many re-renders. React limits the number of renders to prevent an infinite loop.
-  if (props.status === 'work') {
-    if (checkState === true) {
-      fullMainClass = props.mainClass + ' ' + props.mainClass + '__work'
-    } else {
-      fullMainClass = props.mainClass + ' ' + props.mainClass + '__use'
-    }
-  } else {
-    if (!props.remove) {
-      fullMainClass = props.mainClass + ' ' + props.mainClass + '__constructor ' + props.mainClass + '__remove'
-    } else {
-      fullMainClass = props.mainClass + ' ' + props.mainClass + '__constructor'
-    }
-  }
+
+  const fullMainClass = useMemo(() => {
+    const mainClass = props.mainClass;
+    const modifier = props.status !== 'use' ? props.status : 'use';
+    const removeClass = () => {
+      if ((props.status !== 'work') && (!props.remove)) {
+        return props.mainClass + '__remove'
+      } else {
+        return ''
+      }
+    };
+    return `${mainClass} ${mainClass}__${modifier} ${removeClass}`;
+  }, [props.mainClass, props.status, props.remove])
 
   function getDragable(rem) {
     if (rem === false) {
