@@ -1,23 +1,19 @@
 import './PartOfCalc.css'
 import { useSelector } from 'react-redux'
-import React, { useState, useEffect } from 'react'
+//import React, { useState } from 'react'
+//import React from 'react'
 import Button from './Button/Button'
 
 function PartOfCalc(props) {
-  const [drag, setDrag] = useState(true)
-  //const [textDisplay, setTextDisplay] = useState({text: '0'})
-  //console.log(textDisplay)
-  let fullMainClass
   const checkState = useSelector( state => state.check)
+  let fullMainClass // если делать через useState то будет ошибка Uncaught Error: Too many re-renders. React limits the number of renders to prevent an infinite loop.
   if (props.status === 'work') {
-    //console.log(' work ', checkState)
     if (checkState === true) {
       fullMainClass = props.mainClass + ' ' + props.mainClass + '__work'
     } else {
       fullMainClass = props.mainClass + ' ' + props.mainClass + '__use'
     }
   } else {
-    //console.log(' not work ', checkState)
     if (!props.remove) {
       fullMainClass = props.mainClass + ' ' + props.mainClass + '__constructor ' + props.mainClass + '__remove'
     } else {
@@ -36,30 +32,6 @@ function PartOfCalc(props) {
       return false
     }
   }
-  /*
-  function handleClickBut(e) {
-    //console.log(' -> ', e)
-    if (!checkState) {
-      console.log(' key press: ', e.text)
-      //setTextDisplay(e.text)
-      let newText = {text: e.text}
-      setTextDisplay({
-        text: [e.text]
-      })
-      //setTextDisplay('')
-      console.log(textDisplay)
-    }
-  }
-  */
-  /*
-  useEffect(() => { setTextDisplay(textDisplay) }, [])
-  */
-  /*
-  useEffect( () => {
-    console.log(' -> ', textDisplay)
-    setTextDisplay(textDisplay)
-  }, [textDisplay])
-  */
 
   return (
     <>
@@ -79,7 +51,14 @@ function PartOfCalc(props) {
             <section
               className={props.secondClass}
             >
-              <p className={props.thirdClass}>
+              <p className={
+                props.textDisplay === 'Не определено' ?
+                (
+                  (props.thirdClass+' display__text-small')
+                ) : (
+                  props.thirdClass
+                )
+              }>
                 {props.textDisplay}
               </p>
             </section>
@@ -114,86 +93,3 @@ function PartOfCalc(props) {
 }
 
 export default PartOfCalc
-/*
-return (
-  <>
-    {
-      props.mainClass === 'display' ?
-      (
-        <section
-          className={props.mainClass}
-          draggable={checkState}
-          onDragOver={props.onDragOver}
-          onDragLeave={props.onDragLeave}
-          onDragStart={props.onDragStart}
-          onDragEnd={props.onDragEnd}
-          onDrop={props.onDrop}
-        >
-          <section
-            className={props.secondClass}
-          >
-            <p className={props.thirdClass}>
-              0
-            </p>
-          </section>
-        </section>
-      ) : (
-        <section
-          className={props.mainClass}
-          draggable={checkState}
-          onDragOver={props.onDragOver}
-          onDragLeave={props.onDragLeave}
-          onDragStart={props.onDragStart}
-          onDragEnd={props.onDragEnd}
-          onDrop={props.onDrop}
-        >
-          {props.buttons.map( el =>
-            (
-              <Button
-                secondClass={props.secondClass}
-                thirdClass={props.thirdClass}
-                text={el.text}
-                key={el.id}
-              />
-            )
-          )}
-        </section>
-      )
-    }
-  </>
-)
-*/
-
-
-
-/*
-<p className="display__text">
-  {props.result}
-</p>
-*/
-/*
-Display
-*/
-/*
-return (
-  <>
-    <section
-      className="display"
-      draggable={checkState}
-      onDragOver={props.onDragOver}
-      onDragLeave={props.onDragLeave}
-      onDragStart={props.onDragStart}
-      onDragEnd={props.onDragEnd}
-      onDrop={props.onDrop}
-    >
-      <section
-        className="display__indicator"
-      >
-        <p className="display__text">
-          0
-        </p>
-      </section>
-    </section>
-  </>
-)
-*/

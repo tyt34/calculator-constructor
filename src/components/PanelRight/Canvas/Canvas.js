@@ -2,14 +2,11 @@ import './Canvas.css'
 import canvas__img from "../../../images/img.png"
 
 function Canvas(props) {
-  //console.log('Canvas ', props)
   function cardEnterBoard(e) {
-    //console.log(' ---- 0 ----- ')
     e.target.style.background = 'blue'
   }
 
   function cardLeaveBoard(e) {
-    //console.log(' ---- 1 ----- ')
     e.target.style.background = 'rgb(139, 210, 208)'
   }
 

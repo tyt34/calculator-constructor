@@ -1,13 +1,8 @@
-import React, { useState } from 'react'
-import './Board.css'
-import { useSelector } from 'react-redux'
-import PartOfCalc from '../PartOfCalc/PartOfCalc'
+import React from 'react'
 import PanelLeft from '../PanelLeft/PanelLeft'
 import PanelRight from '../PanelRight/PanelRight'
 
 function Board(props) {
-  //console.log('board ', props)
-
   return (
     <>
       {
@@ -49,6 +44,3 @@ function Board(props) {
 }
 
 export default Board
-/*
-elementsOfCanvas={props.elementsOfCanvas} -> items
-*/

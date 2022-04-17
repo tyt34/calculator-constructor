@@ -5,8 +5,6 @@ import WorkPlace from './WorkPlace/WorkPlace'
 import React from 'react'
 
 function PanelRight(props) {
-  //console.log('PanelRight ', props)
-
   return (
     <>
       <section className="panelright">

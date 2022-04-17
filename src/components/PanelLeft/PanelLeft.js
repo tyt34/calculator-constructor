@@ -1,9 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './PanelLeft.css'
-//import Display from './Display/Display'
-//import Equal from './Equal/Equal'
-//import Numbers from './Numbers/Numbers'
-//import Operations from './Operations/Operations'
 import { useSelector } from 'react-redux'
 
 import {
@@ -16,27 +12,9 @@ import PartOfCalc from '../PartOfCalc/PartOfCalc'
 function PanelLeft(props) {
   const checkState = useSelector( state => state.check)
 
-  React.useEffect( () => {
-    //console.log('Left-Panel ', props.leftPanel)
-  }, [props.leftPanel])
-  /*
-  React.useEffect( () => {
-    console.log(' ---------> > > > >')
-    //console.log('Left-Panel checkState ', checkState)
-    arrayButtons.map( element => {
-      console.log(' 3 element: ', element.id)
-      props.items.map( item => {
-        console.log(' 4 it : ', item.id)
-        if (item.id === element.id) {
-          console.log(element.remove)
-          element.remove = true
-          console.log(element.remove)
-          //return element
-        }
-      })
-    })
-  })
-  */
+  function handleClickButt() { // чтобы не появлялась ошибка при клике на кнопку в левой части
+
+  }
 
   return (
     <>
@@ -61,7 +39,7 @@ function PanelLeft(props) {
               onDrop={ (e) => {props.dropHandler(e, props.board, el)} }
 
               handleClick={props.handleClick}
-
+              handleClickButt={handleClickButt}
               textDisplay={'0'}
             />
           )
@@ -72,89 +50,3 @@ function PanelLeft(props) {
 }
 
 export default PanelLeft
-/*
-<PartOfCalc
-  mainClass={el.mainClass}
-  secondClass={el.secondClass}
-  thirdClass={el.thirdClass}
-  buttons={el.buttons}
-  key={el.id}
-  onDragOver={ (e) => {props.dragOverHandler(e)} }
-  onDragLeave={ (e) => {props.dragLeaveHandler(e)} }
-  onDragStart={ (e) => {props.dragStartHandler(e, el) }}
-  onDragEnd={ (e) => {props.dragEndHandler(e)} }
-  onDrop={ (e) => {props.dropHandler(e, el)} }
-  status={'constructor'}
-  remove={el.remove}
-/>
-*/
-
-/*
-onDragOver={ (e) => {dragOverHandler(e)} }
-onDragLeave={ (e) => {dragLeaveHandler(e)} }
-onDragStart={ (e) => {dragStartHandler(e, board) }}
-onDragEnd={ (e) => {dragEndHandler(e)} }
-onDrop={ (e) => {dropHandler(e, board)} }
-*/
-
-/*
-return (
-  <>
-    <section className="panelleft">
-      <Display
-        result='0'
-        onDragOver={ (e) => {dragOverHandler(e)} }
-        onDragLeave={ (e) => {dragLeaveHandler(e)} }
-        onDragStart={ (e) => {dragStartHandler(e) }}
-        onDragEnd={ (e) => {dragEndHandler(e)} }
-        onDrop={ (e) => {dropHandler(e)} }
-      />
-      <Operations
-        onDragOver={ (e) => {dragOverHandler(e)} }
-        onDragLeave={ (e) => {dragLeaveHandler(e)} }
-        onDragStart={ (e) => {dragStartHandler(e) }}
-        onDragEnd={ (e) => {dragEndHandler(e)} }
-        onDrop={ (e) => {dropHandler(e)} }
-      />
-      <Numbers
-        onDragOver={ (e) => {dragOverHandler(e)} }
-        onDragLeave={ (e) => {dragLeaveHandler(e)} }
-        onDragStart={ (e) => {dragStartHandler(e) }}
-        onDragEnd={ (e) => {dragEndHandler(e)} }
-        onDrop={ (e) => {dropHandler(e)} }
-      />
-      <Equal
-        onDragOver={ (e) => {dragOverHandler(e)} }
-        onDragLeave={ (e) => {dragLeaveHandler(e)} }
-        onDragStart={ (e) => {dragStartHandler(e) }}
-        onDragEnd={ (e) => {dragEndHandler(e)} }
-        onDrop={ (e) => {dropHandler(e)} }
-      />
-    </section>
-  </>
-)
-*/
-
-/*
-function dragOverHandler(e) {
-  console.log(' -> 0 <-')
-  e.preventDefault()
-}
-
-function dragLeaveHandler(e) {
-  console.log(' -> 1 <-')
-}
-
-function dragStartHandler(e) {
-  console.log(' -> 2 <-')
-}
-
-function dragEndHandler(e) {
-  console.log(' -> 3 <-')
-}
-
-function dropHandler(e) {
-  console.log(' -> 4 <-')
-  e.preventDefault()
-}
-*/
