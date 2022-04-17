@@ -1,8 +1,11 @@
 .button {
   display: flex;
   justify-content: center;
-  background-color: rgb(194, 142, 127);
   cursor: pointer;
+  background: #FFFFFF;
+  border: 1px solid #E2E3E5;
+  box-sizing: border-box;
+  border-radius: 6px;
 }
 
 .button__small {
@@ -47,12 +50,26 @@
 .button__huge {
   width: 232px;
   height: 64px;
-  margin-left: 4px;
+  margin-left: 3px;
   margin-top: 4px;
   background-color: #5D5FEF;
 }
 
 .button__equal {
-  margin-top: 20px;
+  margin-top: 24px;
   color: white;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 15px;
+}
+
+.button__title {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 15px;
+  text-align: center;
+  color: #000000;
 }

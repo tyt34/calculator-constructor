@@ -1,14 +1,10 @@
 .work {
   display: flex;
   flex-direction: column;
-  /*align-items: flex-start;*/
   justify-content: flex-start;
-  /*width: 243px;*/
   width: 243px;
   height: 480px;
   margin-left: auto;
   margin-right: auto;
-  background-color: rgb(237, 206, 165);
-  /*margin-top: 30px;*/
   margin-top: 22px;
 }

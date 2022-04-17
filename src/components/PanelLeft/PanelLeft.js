@@ -1,17 +1,14 @@
 import React from 'react'
+import PartOfCalc from '../PartOfCalc/PartOfCalc'
 import './PanelLeft.css'
 import { useSelector } from 'react-redux'
-
 import {
   arrayButtons,
 } from '../../utils/constants.js'
 
-import PartOfCalc from '../PartOfCalc/PartOfCalc'
-
-
 function PanelLeft(props) {
   const checkState = useSelector( state => state.check)
-
+  
   function handleClickButt() { // чтобы не появлялась ошибка при клике на кнопку в левой части
 
   }

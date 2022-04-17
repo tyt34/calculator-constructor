@@ -1,10 +1,12 @@
 import './App.css'
 import Board from '../Board/Board'
-import { useSelector } from 'react-redux'
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import {
   arrayButtons,
+  goodClassArray
 } from '../../utils/constants.js'
+
 
 function App() {
   const checkState = useSelector( state => state.check)
@@ -24,12 +26,6 @@ function App() {
 
   function dragOverHandler(e) { //просто двигаешь
     e.preventDefault()
-    let goodClassArray = [
-      'numbers numbers__work',
-      'display display__work',
-      'operations operations__work',
-      'equal equal__work'
-    ]
     const coincidence = (el) => {
       return el === e.currentTarget.className
     }
@@ -121,7 +117,7 @@ function App() {
   }
 
   function setRemove() {
-    arrayButtons.map( el => { // чтобы в левой части появилось опасити
+    arrayButtons.map( el => { // чтобы в левой части появилось / пропало опасити
       if (el.id === currentItem.id) {
         el.remove = false
       }
@@ -129,7 +125,7 @@ function App() {
   }
 
   function setNotRemove(element) {
-    arrayButtons.map( el => { // чтобы в левой части появилось опасити
+    arrayButtons.map( el => { // чтобы в левой части появилось / пропало опасити
       if (el.id === element.id) {
         el.remove = true
       }

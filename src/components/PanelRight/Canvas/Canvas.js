@@ -3,11 +3,11 @@ import canvas__img from "../../../images/img.png"
 
 function Canvas(props) {
   function cardEnterBoard(e) {
-    e.target.style.background = 'blue'
+    e.target.style.background = '#F0F9FF'
   }
 
   function cardLeaveBoard(e) {
-    e.target.style.background = 'rgb(139, 210, 208)'
+    e.target.style.background = '#FFFFFF'
   }
 
   return (

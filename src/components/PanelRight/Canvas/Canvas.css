@@ -1,13 +1,13 @@
 .canvas {
   display: flex;
   flex-direction: column;
-  width: 243px;
-  height: 480px;
+  width: 240px;
+  height: 476px;
   margin-left: auto;
   margin-right: auto;
-  background-color: rgb(139, 210, 208);
   margin-top: 30px;
-  border: 2px dashed black;
+  border: 2px dashed #C4C4C4;
+  border-radius: 6px;
 }
 
 .canvas__img {
@@ -15,7 +15,7 @@
   height: 20px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 199px;
+  margin-top: 196px;
 }
 
 .canvas__up {
@@ -24,6 +24,11 @@
   margin-right: auto;
   margin-top: 12px;
   margin-bottom: 0px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
 }
 
 .canvas__bottom {

@@ -1,6 +1,10 @@
 import React from 'react'
 import './CheckBox.css'
 import { useDispatch, useSelector } from 'react-redux'
+import eyeBlack from "../../../images/eye-black.svg"
+import eyeBlue from "../../../images/eye-blue.svg"
+import arrowBlack from "../../../images/arrow-black.svg"
+import arrowBlue from "../../../images/arrow-blue.svg"
 
 function CheckBox(props) {
   const dispatch = useDispatch()
@@ -32,7 +36,51 @@ function CheckBox(props) {
             >
             </span>
             <span
-              className="check-switch">
+              className="check-switch"
+            >
+            </span>
+            <span className='check__description'>
+              {
+                checkState ? (
+                  <>
+                    <img
+                      className="check__img-left"
+                      alt="иконка глазика"
+                      src={eyeBlue}
+                    />
+                    <p className="check__text-left">
+                      Runtime
+                    </p>
+                    <img
+                      className="check__img-right"
+                      alt="иконка стрелочек"
+                      src={arrowBlack}
+                    />
+                    <p className="check__text-right">
+                      Constructor
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <img
+                      className="check__img-left"
+                      alt="иконка глазика"
+                      src={eyeBlack}
+                    />
+                    <p className="check__text-left">
+                      Runtime
+                    </p>
+                    <img
+                      className="check__img-right"
+                      alt="иконка стрелочек"
+                      src={arrowBlue}
+                    />
+                    <p className="check__text-right">
+                      Constructor
+                    </p>
+                  </>
+                )
+              }
             </span>
           </label>
       </section>

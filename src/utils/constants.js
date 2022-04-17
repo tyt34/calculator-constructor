@@ -10,6 +10,7 @@ const arrayButtons = [
     id: 2,
     mainClass: 'operations',
     secondClass: 'button__small',
+    thirdClass: 'button__title',
     buttons: [
       {id: 1, text: '/'},
       {id: 2, text: 'x'},
@@ -22,6 +23,7 @@ const arrayButtons = [
     id: 3,
     mainClass: 'numbers',
     secondClass: 'button__normal',
+    thirdClass: 'button__title',
     buttons: [
       {id: 5, text: '7'},
       {id: 6, text: '8'},
@@ -49,4 +51,15 @@ const arrayButtons = [
   }
 ]
 
+let goodClassArray = [
+  'numbers numbers__work ',
+  'display display__work ',
+  'operations operations__work ',
+  'equal equal__work '
+]
+
+let arrayForCheckLastInput = ['/', 'x', '-', '+']
+
 module.exports.arrayButtons = arrayButtons
+module.exports.goodClassArray = goodClassArray
+module.exports.arrayForCheckLastInput = arrayForCheckLastInput

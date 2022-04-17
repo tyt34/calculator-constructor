@@ -2,16 +2,30 @@ import './WorkPlace.css'
 import PartOfCalc from '../../PartOfCalc/PartOfCalc'
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import {
+  arrayForCheckLastInput,
+} from '../../../utils/constants.js'
 
 function WorkPlace(props) {
   const [textDisplay, setTextDisplay] = useState('0')
   const checkState = useSelector( state => state.check)
   const [inputs, setInputs] = useState([])
 
-  function handleClickButt(e) {
+  function checkLastInput(inputs) {
+    let res = true
+    const lastInput = inputs[inputs.length-1].num === undefined ? inputs[inputs.length-1].oper : inputs[inputs.length-1].num
+    arrayForCheckLastInput.map( arrInp => {
+      if (arrInp === lastInput) return res = false
+    })
+    return res
+  }
+
+  function handleClickButt(e) { // НЕ РАБОТАЕТ 8 / -2
     if (!checkState) {
       if (e.text === '=') {
-        getRes(inputs)
+        if (checkLastInput(inputs)) {
+          getRes(inputs)
+        }
         setInputs([])
       } else if (inputs.length === 0) { // ПЕРВОЕ НАЖАТИЕ ПОСЛЕ РАВНО
         if (!/[0-9\-,]/.test(textDisplay)) { // это на случай, если первое нажатие после = будет ,
@@ -76,44 +90,33 @@ function WorkPlace(props) {
   }
 
   useEffect( () => {
-    if (textDisplay.length > 11) {
+    if ((textDisplay.length > 11) && (textDisplay !== 'Не определено')) {
       setTextDisplay(' O V E R')
     }
   }, [textDisplay])
 
   function getDataFronInputs(inputs) {
     let operFirst = false
-    let operSec = false
     let first = false
     for (let i=inputs.length-2; i>-1; i--) {
-      if (operFirst && !operSec && inputs[i].oper) {
-        operSec = inputs[i].oper
-      }
       if (!operFirst && inputs[i].oper) {
         operFirst = inputs[i].oper
       } else if (!first && operFirst) {
         first = inputs[i].num
       }
     }
-    if ((operFirst === '-') && (turnToTrueNumber(first) < 0)) { // например -1 + -1 = -2
+
+    if (turnToTrueNumber(inputs[inputs.length-1].num) < 0) { // -8  + / - x -2 = -10
       return {
         first: turnToTrueNumber(first),
         second: turnToTrueNumber(inputs[inputs.length-1].num),
-        operation: operSec
+        operation: '+'
       }
-    } else if (first) {
-      if ((operFirst === '-') && (turnToTrueNumber(inputs[inputs.length-1].num) < 0)) { // 9 -1 - 8
-        return {
-          first: turnToTrueNumber(first),
-          second: turnToTrueNumber(inputs[inputs.length-1].num),
-          operation: '+'
-        }
-      } else { // обычное вычисление
-        return {
-          first: turnToTrueNumber(first),
-          second: turnToTrueNumber(inputs[inputs.length-1].num),
-          operation: operFirst
-        }
+    } else if (first) { // все остальное
+      return {
+        first: turnToTrueNumber(first),
+        second: turnToTrueNumber(inputs[inputs.length-1].num),
+        operation: operFirst
       }
     } else { // чего то не хватает
       return {

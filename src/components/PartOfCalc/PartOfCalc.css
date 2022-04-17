@@ -2,20 +2,37 @@
   display: flex;
   width: 240px;
   height: 60px;
-  background-color: rgb(169, 228, 240);
   margin-left: auto;
   margin-right: auto;
+  background: #FFFFFF;
+  border-radius: 4px;
+}
 
+.display__shadow {
+  display: flex;
+  width: 240px;
+  height: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.06), 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.display__shadow-left {
+  margin-top: 104px;
+}
+
+.display__shadow-right {
+  margin-top: 6px;
 }
 
 .display__constructor {
-  margin-top: 106px;
+  /*margin-top: 106px;*/
   cursor: pointer;
 }
 
 .display__work {
   cursor: pointer;
-  margin-top: 8px;
+  /*margin-top: 8px;*/
 }
 
 .display__use {
@@ -33,18 +50,20 @@
   align-items: flex-end;
   width: 232px;
   height: 52px;
-  margin-left: 4px;
+  margin-left: 3px;
   margin-top: 4px;
-  background-color: rgb(205, 175, 227);
+  background: #F3F4F6;
+  border-radius: 6px;
 }
 
 .display__text {
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 800;
   font-size: 36px;
   line-height: 44px;
   margin: 0;
-  margin-top: 3px;
+  padding-bottom: 3px;
   margin-right: 8px;
 }
 
@@ -59,19 +78,35 @@
 .equal {
   width: 240px;
   height: 72px;
-  background-color: rgb(180, 156, 184);
   margin-left: auto;
   margin-right: auto;
+  background: #FFFFFF;
+  border-radius: 4px;
+}
+
+.equal__shadow {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: 240px;
+  height: 72px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.06), 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.equal__shadow-left {
+  margin-top: 11px;
+}
+
+.equal__shadow-right {
+  margin-top: 8px;
 }
 
 .equal__constructor {
-  margin-top: 12px;
   cursor: pointer;
 }
 
 .equal__work {
   cursor: pointer;
-  margin-top: 8px;
 }
 
 .equal__use {
@@ -89,19 +124,35 @@
   flex-wrap: wrap;
   width: 240px;
   height: 224px;
-  background-color: rgb(173, 131, 139);
   margin-left: auto;
   margin-right: auto;
+  background: #FFFFFF;
+  border-radius: 4px;
+}
+
+.numbers__shadow {
+  display: flex;
+  width: 240px;
+  height: 224px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.06), 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.numbers__shadow-left {
+  margin-top: 12px;
+}
+
+.numbers__shadow-right {
+  margin-top: 8px;
 }
 
 .numbers__constructor {
-  margin-top: 12px;
   cursor: pointer;
 }
 
 .numbers__work {
   cursor: pointer;
-  margin-top: 8px;
 }
 
 .numbers__use {
@@ -118,19 +169,36 @@
   justify-content: space-between;
   width: 240px;
   height: 56px;
-  background-color: rgb(171, 194, 159);
+  background: #FFFFFF;
+  border-radius: 4px;
   margin-left: auto;
   margin-right: auto;
 }
 
+.operations__shadow {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: 240px;
+  height: 56px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.06), 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.operations__shadow-left {
+  margin-top: 14px;
+}
+
+.operations__shadow-right {
+  margin-top: 8px;
+}
+
 .operations__constructor {
-  margin-top: 12px;
   cursor: pointer;
 }
 
 .operations__work {
   cursor: pointer;
-  margin-top: 8px;
+  /*margin-top: 8px;*/
 }
 
 .operations__use {
