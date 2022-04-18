@@ -53,7 +53,7 @@ function App() {
 
   function dropHandler(e, board, el) {
     e.preventDefault()
-    if ((currentBoard.id !== 'left') || (board.id !== 'left')) {
+    if ((currentBoard.id === 'left') || (board.id === 'right')) {
       const currentIndex = currentBoard.items.indexOf(currentItem)
       const dropIndex = board.items.indexOf(el)
       if ((dropIndex !== -1) && (currentIndex !== dropIndex)) {
@@ -153,7 +153,6 @@ function App() {
             setNotRemove(el)
             displayTop()
           }
-
           break
         case 3:
           break

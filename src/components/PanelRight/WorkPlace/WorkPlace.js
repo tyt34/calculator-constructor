@@ -20,7 +20,7 @@ function WorkPlace(props) {
     return res
   }
 
-  function handleClickButt(e) { // НЕ РАБОТАЕТ 8 / -2
+  function handleClickButt(e) {
     if (!checkState) {
       if (e.text === '=') {
         if (checkLastInput(inputs)) {
@@ -90,8 +90,8 @@ function WorkPlace(props) {
   }
 
   useEffect( () => {
-    if ((textDisplay.length > 11) && (textDisplay !== 'Не определено')) {
-      setTextDisplay(' O V E R')
+    if ((textDisplay.length > 10) && (textDisplay !== 'Не определено')) {
+      setTextDisplay('o v e r')
     }
   }, [textDisplay])
 
