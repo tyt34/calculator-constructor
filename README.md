@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# Drag and drop приложение для конструирования калькулятора
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![](https://shields.io/badge/-HTML-orange)
+![](https://shields.io/badge/-CSS-blue)
+![](https://shields.io/badge/-JavaScript-yellow)
+![](https://shields.io/badge/-React.JS-05D9FF)
 
-## Available Scripts
+## Описание 
+ - В данном приложение изначально есть два экрана. Слева набор элементов для сборки калькулятора. Справа холст для размещения этих элементов. Так же присутствует кнопка для переключения режима работы приложения - *Runtime / Constructor*. В режиме *Constructor* элементы можно перемещать. В режиме *Runtime* элементы размещенные справа выполняют функции калькулятора, то есть кнопки нажимаются, дисплей показывает введенные данные. 
 
-In the project directory, you can run:
+## Функциональность калькулятора (Runtime)
+ - Калькулятор производит вычисление между последними двумя введенными числами и последней операцией. (*Пример 1, 2, 3*)
+ - Кнопка равно (*=*) производит расчет и сбрасывает память введенных данных. То есть нажатие на любую следующую кнопку калькулятора очищает дисплей. 
+ - Если делить на ноль, на дисплее будет написано *Не определено*.
+ - Если числа не умещаются на экране, (не более 10 символов) на дисплее будет написано *o v e r*. В этот момент число еще хранится в памяти. Если после этого нажать кнопку любого числа, то предыдущее сбросится. Если нажать кнопку операции и новое число, затем равно, то будет произведено вычисление. 
+ - Если в памяти нет двух чисел, то при нажатие на равно ничего не произойдет, кроме сброса памяти.
+ - Если результат вычисления меньше чем 10⁻⁷ то будет произведено преобразование в экспоненциальный вид. (*Пример 5*)
+ - Так же поддерживается функция ввода дробно числа без нажатия *0*. (*Пример 4*)
+ - - *Пример 1*: если ввести: *2 + / х -2* результат будет *0* (вычисление: *2 - 2*).
+ - - *Пример 2*: если ввести: *3 + / х 2* результ будет *6* (вычисление: *2 х 3*).
+ - - *Пример 3*: если ввести: *2 + - 3 / х 4* результат будет *12* (вычисление *3 х 4*).
+ - - *Пример 4*: если ввести: *,2 х ,2* результат будет *0,04* (вычисление *0,2 х 0,2*)
+ - - *Пример 5*: если ввести *0,0000001 -0,0000008* результат будет *-7е-7* (то есть *-7 х 10⁻⁷*)
+ 
+ ## Функциональность drag and drop (Constructor)
+  - Слева направо элементы можно перенести если потянуть их мышью. Обратно, только если произвести двойное нажатие на элемент справа. 
+ - Дисплей всегда находится сверху. 
+ - При размещение элемента в правой части происходит отображения места, куда он призимлиться. Синия линия под элементом прказывает, что элемент, который вы держите, окажется под этим элементом. 
+ - Если перемещать дисплей, то место приземления не отображается, так как дисплей всегда сверху.
+ - Элемент, которого перенесли, слева становится полупрозрачным. 
 
-### `npm start` - - - - 
+<tr>
+    <hr>
+</tr>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ [Ссылка на макет в Figma](https://www.figma.com/file/pdYzuOkvXY3Q00YRAMsLuz/Calculator-Constructor).
+ 
+ [Ссылка на готовый проект. Поиск](https://tyt34.github.io/simple-hotel-check/). (ПОКА НЕ РАБОТАЕТ)
+ 
+ ## Запуск приложения
+1. npm i
+2. npm run start
