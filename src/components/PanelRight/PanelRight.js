@@ -4,33 +4,39 @@ import Canvas from './Canvas/Canvas'
 import WorkPlace from './WorkPlace/WorkPlace'
 import React from 'react'
 
-function PanelRight(props) {
+function PanelRight(
+  {
+    items, boardId, board, dragOverHandler,
+    dragLeaveHandler, dragStartHandler, dragEndHandler,
+    dropHandler, dropCardHandler, handleClick
+  }
+) {
   return (
     <>
       <section className="panelright">
         <CheckBox />
         {
-          props.items.length === 0 ?
+          items.length === 0 ?
           (
             <Canvas
-              items={props.items}
-              board={props.board}
-              dragOverHandler={props.dragOverHandler}
-              dropCardHandler={props.dropCardHandler}
+              items={items}
+              board={board}
+              dragOverHandler={dragOverHandler}
+              dropCardHandler={dropCardHandler}
             />
           ) : (
             <WorkPlace
-              items={props.items}
-              board={props.board}
-              dragOverHandler={props.dragOverHandler}
-              dragLeaveHandler={props.dragLeaveHandler}
-              dragStartHandler={props.dragStartHandler}
-              dragEndHandler={props.dragEndHandler}
-              dropHandler={props.dropHandler}
+              items={items}
+              board={board}
+              dragOverHandler={dragOverHandler}
+              dragLeaveHandler={dragLeaveHandler}
+              dragStartHandler={dragStartHandler}
+              dragEndHandler={dragEndHandler}
+              dropHandler={dropHandler}
 
-              dropCardHandler={props.dropCardHandler}
+              dropCardHandler={dropCardHandler}
 
-              handleClick={props.handleClick}
+              handleClick={handleClick}
             />
           )
         }

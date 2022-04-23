@@ -2,40 +2,45 @@ import React from 'react'
 import PanelLeft from '../PanelLeft/PanelLeft'
 import PanelRight from '../PanelRight/PanelRight'
 
-function Board(props) {
+function Board(
+  {
+    boardId, board, items, dragOverHandler, dragLeaveHandler, dragStartHandler,
+    dragEndHandler, dropHandler, dropCardHandler, handleClick
+  }
+) {
   return (
     <>
       {
-        props.boardId === 'left' ?
+        boardId === 'left' ?
         (
           <PanelLeft
-            items={props.items}
-            boardId={props.boardId}
-            board={props.board}
-            dragOverHandler={props.dragOverHandler}
-            dragLeaveHandler={props.dragLeaveHandler}
-            dragStartHandler={props.dragStartHandler}
-            dragEndHandler={props.dragEndHandler}
-            dropHandler={props.dropHandler}
+            items={items}
+            boardId={boardId}
+            board={board}
+            dragOverHandler={dragOverHandler}
+            dragLeaveHandler={dragLeaveHandler}
+            dragStartHandler={dragStartHandler}
+            dragEndHandler={dragEndHandler}
+            dropHandler={dropHandler}
 
-            dropCardHandler={props.dropCardHandler}
+            dropCardHandler={dropCardHandler}
 
-            handleClick={props.handleClick}
+            handleClick={handleClick}
           />
         ) : (
           <PanelRight
-            items={props.items}
-            boardId={props.boardId}
-            board={props.board}
-            dragOverHandler={props.dragOverHandler}
-            dragLeaveHandler={props.dragLeaveHandler}
-            dragStartHandler={props.dragStartHandler}
-            dragEndHandler={props.dragEndHandler}
-            dropHandler={props.dropHandler}
+            items={items}
+            boardId={boardId}
+            board={board}
+            dragOverHandler={dragOverHandler}
+            dragLeaveHandler={dragLeaveHandler}
+            dragStartHandler={dragStartHandler}
+            dragEndHandler={dragEndHandler}
+            dropHandler={dropHandler}
 
-            dropCardHandler={props.dropCardHandler}
+            dropCardHandler={dropCardHandler}
 
-            handleClick={props.handleClick}
+            handleClick={handleClick}
           />
         )
       }

@@ -1,7 +1,7 @@
 import './Canvas.css'
 import canvas__img from "../../../images/img.png"
 
-function Canvas(props) {
+function Canvas({items, board, dragOverHandler, dropCardHandler}) {
   function cardEnterBoard(e) {
     e.target.style.background = '#F0F9FF'
   }
@@ -14,8 +14,8 @@ function Canvas(props) {
     <>
       <section
         className="canvas"
-        onDragOver={ (e) => {props.dragOverHandler(e)} }
-        onDrop={ (e) => {props.dropCardHandler(e, props.board)} }
+        onDragOver={ (e) => {dragOverHandler(e)} }
+        onDrop={ (e) => {dropCardHandler(e, board)} }
 
         onDragEnter={ (e) => {cardEnterBoard(e)}}
         onDragLeave={ (e) => {cardLeaveBoard(e)}}

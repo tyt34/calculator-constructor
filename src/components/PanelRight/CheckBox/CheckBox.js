@@ -6,7 +6,7 @@ import eyeBlue from "../../../images/eye-blue.svg"
 import arrowBlack from "../../../images/arrow-black.svg"
 import arrowBlue from "../../../images/arrow-blue.svg"
 
-function CheckBox(props) {
+function CheckBox() {
   const dispatch = useDispatch()
   const checkState = useSelector( state => state.check)
 

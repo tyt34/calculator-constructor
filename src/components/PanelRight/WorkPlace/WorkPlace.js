@@ -6,7 +6,19 @@ import {
   arrayForCheckLastInput,
 } from '../../../utils/constants.js'
 
-function WorkPlace(props) {
+function WorkPlace(
+  {
+    items,
+    board,
+    dragOverHandler,
+    dragLeaveHandler,
+    dragStartHandler,
+    dragEndHandler,
+    dropHandler,
+    dropCardHandler,
+    handleClick
+  }
+) {
   const [textDisplay, setTextDisplay] = useState('0')
   const checkState = useSelector( state => state.check)
   const [inputs, setInputs] = useState([])
@@ -191,28 +203,28 @@ function WorkPlace(props) {
     <>
       <section
         className="work"
-        onDragOver={ (e) => {props.dragOverHandler(e)} }
-        onDrop={ (e) => {props.dropCardHandler(e, props.board)} }
+        onDragOver={ (e) => {dragOverHandler(e)} }
+        onDrop={ (e) => {dropCardHandler(e, board)} }
       >
-        {props.items.map( (el) =>
+        {items.map( (el) =>
           (
             <PartOfCalc
+              key={el.id}
               mainClass={el.mainClass}
               secondClass={el.secondClass}
               thirdClass={el.thirdClass}
               buttons={el.buttons}
-              key={el.id}
-              onDragOver={ (e) => {props.dragOverHandler(e)} }
-              onDragLeave={ (e) => {props.dragLeaveHandler(e)} }
-              onDragStart={ (e) => {props.dragStartHandler(e, props.board, el) }}
-              onDragEnd={ (e) => {props.dragEndHandler(e)} }
-              onDrop={ (e) => {props.dropHandler(e, props.board, el)} }
+              onDragOver={ (e) => {dragOverHandler(e)} }
+              onDragLeave={ (e) => {dragLeaveHandler(e)} }
+              onDragStart={ (e) => {dragStartHandler(e, board, el) }}
+              onDragEnd={ (e) => {dragEndHandler(e)} }
+              onDrop={ (e) => {dropHandler(e, board, el)} }
               status={'work'}
-              element={el}
-              handleClick={props.handleClick}
-
+              handleClick={handleClick}
               textDisplay={textDisplay}
               handleClickButt={handleClickButt}
+
+              element={el}
             />
           )
         )}

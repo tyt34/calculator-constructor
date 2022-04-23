@@ -6,9 +6,15 @@ import {
   arrayButtons,
 } from '../../utils/constants.js'
 
-function PanelLeft(props) {
+function PanelLeft(
+  {
+    items, boardId, board, dragOverHandler,
+    dragLeaveHandler, dragStartHandler, dragEndHandler,
+    dropHandler, dropCardHandler, handleClick
+  }
+) {
   const checkState = useSelector( state => state.check)
-  
+
   function handleClickButt() { // чтобы не появлялась ошибка при клике на кнопку в левой части
 
   }
@@ -16,28 +22,27 @@ function PanelLeft(props) {
   return (
     <>
       <section
-        className="panelleft"
         className={ checkState ? 'panelleft' : 'panelleft-disabled'}
       >
         {arrayButtons.map( (el) =>
           (
             <PartOfCalc
+              key={el.id}
               mainClass={el.mainClass}
               secondClass={el.secondClass}
               thirdClass={el.thirdClass}
               buttons={el.buttons}
-              key={el.id}
+              onDragOver={ (e) => {dragOverHandler(e)} }
+              onDragLeave={ (e) => {dragLeaveHandler(e)} }
+              onDragStart={ (e) => {dragStartHandler(e, board, el) }}
+              onDrop={ (e) => {dropHandler(e, board, el)} }
               status={'constructor'}
-              remove={el.remove}
-              onDragOver={ (e) => {props.dragOverHandler(e)} }
-              onDragLeave={ (e) => {props.dragLeaveHandler(e)} }
-              onDragStart={ (e) => {props.dragStartHandler(e, props.board, el) }}
-              onDragEnd={ (e) => {props.dragEndHandler(e)} }
-              onDrop={ (e) => {props.dropHandler(e, props.board, el)} }
-
-              handleClick={props.handleClick}
-              handleClickButt={handleClickButt}
+              handleClick={handleClick}
               textDisplay={'0'}
+              handleClickButt={handleClickButt}
+
+              remove={el.remove}
+              onDragEnd={ (e) => {dragEndHandler(e)} }
             />
           )
         )}
