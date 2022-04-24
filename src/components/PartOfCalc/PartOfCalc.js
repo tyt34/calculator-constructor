@@ -3,20 +3,25 @@ import { useSelector } from 'react-redux'
 import React, { useMemo } from 'react'
 import Button from './Button/Button'
 
-function PartOfCalc(props) {
+function PartOfCalc(
+  {
+    mainClass, secondClass, thirdClass, buttons, onDragOver,
+    onDragLeave, onDragStart, onDrop, onDragEnd, status, handleClick,
+    textDisplay, handleClickButt, element, remove
+  }
+) {
   const checkState = useSelector( state => state.check)
 
   const fullMainClass = useMemo(() => {
-    const mainClass = props.mainClass
-    const modifier = props.status !== 'use' ? props.status : 'use'
-    const removeClass = (props.status !== 'work') && (!props.remove) ? props.mainClass + '__remove' : '' // из за этого в классе появляется лишний пробел
+    const modifier = status !== 'use' ? status : 'use'
+    const removeClass = (status !== 'work') && (!remove) ? mainClass + '__remove' : '' // из за этого в классе появляется лишний пробел
     return `${mainClass} ${mainClass}__${modifier} ${removeClass}`
-  }, [props.mainClass, props.status, props.remove])
+  }, [mainClass, status, remove])
 
   const shadowClass = useMemo(() => {
-    const side = props.status === 'constructor' ? 'left' : 'right'
-    return `${props.mainClass}__shadow ${props.mainClass}__shadow-${side}`
-  }, [props.mainClass, props.status, props.remove])
+    const side = status === 'constructor' ? 'left' : 'right'
+    return `${mainClass}__shadow ${mainClass}__shadow-${side}`
+  }, [mainClass, status, remove])
 
   function getDragable(rem) {
     if (rem === false) {
@@ -33,31 +38,31 @@ function PartOfCalc(props) {
   return (
     <>
       {
-        props.mainClass === 'display' ?
+        mainClass === 'display' ?
         (
           <section className={shadowClass}>
             <section
               className={fullMainClass}
-              draggable={getDragable(props.remove)}
-              onDragOver={props.onDragOver}
-              onDragLeave={props.onDragLeave}
-              onDragStart={props.onDragStart}
-              onDragEnd={props.onDragEnd}
-              onDrop={props.onDrop}
-              onClick={(e) => {props.handleClick(e, props.element)}}
+              draggable={getDragable(remove)}
+              onDragOver={onDragOver}
+              onDragLeave={onDragLeave}
+              onDragStart={onDragStart}
+              onDragEnd={onDragEnd}
+              onDrop={onDrop}
+              onClick={(e) => {handleClick(e, element)}}
             >
               <section
-                className={props.secondClass}
+                className={secondClass}
               >
                 <p className={
-                  props.textDisplay === 'Не определено' ?
+                  textDisplay === 'Не определено' ?
                   (
-                    (props.thirdClass+' display__text-small')
+                    (thirdClass+' display__text-small')
                   ) : (
-                    props.thirdClass
+                    thirdClass
                   )
                 }>
-                  {props.textDisplay}
+                  {textDisplay}
                 </p>
               </section>
             </section>
@@ -66,22 +71,22 @@ function PartOfCalc(props) {
           <section className={shadowClass}>
             <section
               className={fullMainClass}
-              draggable={getDragable(props.remove)}
-              onDragOver={props.onDragOver}
-              onDragLeave={props.onDragLeave}
-              onDragStart={props.onDragStart}
-              onDragEnd={props.onDragEnd}
-              onDrop={props.onDrop}
-              onClick={(e) => {props.handleClick(e, props.element)}}
+              draggable={getDragable(remove)}
+              onDragOver={onDragOver}
+              onDragLeave={onDragLeave}
+              onDragStart={onDragStart}
+              onDragEnd={onDragEnd}
+              onDrop={onDrop}
+              onClick={(e) => {handleClick(e, element)}}
             >
-              {props.buttons.map( el =>
+              {buttons.map( el =>
                 (
                   <Button
-                    secondClass={props.secondClass}
-                    thirdClass={props.thirdClass}
+                    secondClass={secondClass}
+                    thirdClass={thirdClass}
                     text={el.text}
                     key={el.id}
-                    onClick={props.handleClickButt}
+                    onClick={handleClickButt}
                   />
                 )
               )}

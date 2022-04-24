@@ -36,13 +36,13 @@ function PanelLeft(
               onDragLeave={ (e) => {dragLeaveHandler(e)} }
               onDragStart={ (e) => {dragStartHandler(e, board, el) }}
               onDrop={ (e) => {dropHandler(e, board, el)} }
+              onDragEnd={ (e) => {dragEndHandler(e)} }
               status={'constructor'}
               handleClick={handleClick}
               textDisplay={'0'}
               handleClickButt={handleClickButt}
-
+              
               remove={el.remove}
-              onDragEnd={ (e) => {dragEndHandler(e)} }
             />
           )
         )}
