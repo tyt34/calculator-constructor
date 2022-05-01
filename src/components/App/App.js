@@ -1,6 +1,6 @@
 import './App.css'
 import Board from '../Board/Board'
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import {
   arrayButtons,
@@ -23,14 +23,16 @@ function App() {
   ])
   const [currentItem, setCurrentItem] = useState(null)
   const [currentBoard, setCurrentBoard] = useState(null)
+  const workplaceRef = useRef(null)
 
-  function dragOverHandler(e) { //просто двигаешь
+  function dragOverHandler(e) { // просто двигаешь
     e.preventDefault()
     const coincidence = (el) => {
       return el === e.currentTarget.className
     }
     if (currentItem.mainClass !== 'display') {
       if (goodClassArray.some(coincidence)) {
+        workplaceRef.current.style.background = '#F0F9FF'
         e.currentTarget.style.boxShadow = '0px 7px 0px -2px #5D5FEF'
       }
     }
@@ -46,7 +48,8 @@ function App() {
     setCurrentBoard(board)
   }
 
-  function dragEndHandler(e) {
+  function dragEndHandler(e) { // элемент калькулятора отпускается над холстом
+    workplaceRef.current.style.background = '#FFFFFF'
     e.target.style.boxShadow = 'none'
     e.currentTarget.style.boxShadow = 'none'
   }
@@ -204,6 +207,8 @@ function App() {
             dropCardHandler={dropCardHandler}
 
             handleClick={handleClick}
+
+            workplaceRef={workplaceRef}
           />
         )
       }

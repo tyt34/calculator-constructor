@@ -5,7 +5,7 @@ import PanelRight from '../PanelRight/PanelRight'
 function Board(
   {
     boardId, board, items, dragOverHandler, dragLeaveHandler, dragStartHandler,
-    dragEndHandler, dropHandler, dropCardHandler, handleClick
+    dragEndHandler, dropHandler, dropCardHandler, handleClick, workplaceRef
   }
 ) {
   return (
@@ -41,6 +41,8 @@ function Board(
             dropCardHandler={dropCardHandler}
 
             handleClick={handleClick}
+
+            workplaceRef={workplaceRef}
           />
         )
       }

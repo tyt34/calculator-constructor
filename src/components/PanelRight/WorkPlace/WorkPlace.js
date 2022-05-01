@@ -16,7 +16,8 @@ function WorkPlace(
     dragEndHandler,
     dropHandler,
     dropCardHandler,
-    handleClick
+    handleClick,
+    workplaceRef
   }
 ) {
   const [textDisplay, setTextDisplay] = useState('0')
@@ -199,12 +200,25 @@ function WorkPlace(
     return rewArrRes.join('')
   }
 
+  function cardEnterBoard(e) {
+    workplaceRef.current.style.background = '#F0F9FF'
+  }
+
+  function cardLeaveBoard(e) {
+    workplaceRef.current.style.background = '#FFFFFF'
+  }
+
   return (
     <>
       <section
         className="work"
         onDragOver={ (e) => {dragOverHandler(e)} }
         onDrop={ (e) => {dropCardHandler(e, board)} }
+
+        onDragEnter={ (e) => {cardEnterBoard(e)}}
+        onDragLeave={ (e) => {cardLeaveBoard(e)}}
+
+        ref={workplaceRef}
       >
         {items.map( (el) =>
           (

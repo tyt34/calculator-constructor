@@ -8,7 +8,7 @@ function PanelRight(
   {
     items, boardId, board, dragOverHandler,
     dragLeaveHandler, dragStartHandler, dragEndHandler,
-    dropHandler, dropCardHandler, handleClick
+    dropHandler, dropCardHandler, handleClick, workplaceRef
   }
 ) {
   return (
@@ -37,6 +37,8 @@ function PanelRight(
               dropCardHandler={dropCardHandler}
 
               handleClick={handleClick}
+
+              workplaceRef={workplaceRef}
             />
           )
         }
