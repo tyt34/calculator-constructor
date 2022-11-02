@@ -36,7 +36,7 @@
 
  [Ссылка на макет в Figma](https://www.figma.com/file/pdYzuOkvXY3Q00YRAMsLuz/Calculator-Constructor).
 
- [Ссылка на готовый проект](https://tyt34.github.io/Calculator-Constructor/).
+ [Ссылка на готовый проект](https://tyt34.github.io/calculator-constructor/).
 
  ## Запуск приложения
 1. npm i
