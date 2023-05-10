@@ -5,6 +5,7 @@
 /src/old_files
 /.pnp
 .pnp.js
+/.vscode
 
 # testing
 /coverage
